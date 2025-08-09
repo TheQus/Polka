@@ -1278,8 +1278,15 @@
         function stopRecording() {
             if (mediaRecorder && isRecording) {
                 mediaRecorder.stop();
-                mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                
+                // Останавливаем все треки медиапотока
+                if (mediaRecorder.stream) {
+                    mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                }
+                
+                // Сбрасываем состояние
                 isRecording = false;
+                mediaRecorder = null; // Очищаем ссылку на mediaRecorder
 
                 const recordBtn = document.getElementById('recordBtn');
                 const micIndicator = document.getElementById('micIndicator');
@@ -1351,6 +1358,11 @@
             document.getElementById('playbackBtn').disabled = true;
             document.getElementById('playbackBtn').style.opacity = '0.5';
             userRecordingBlob = null;
+            
+            // Также сбрасываем состояние записи при сбросе feedback
+            if (isRecording) {
+                stopRecording();
+            }
         }
 
         function nextPronunciationWord() {
