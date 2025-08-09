@@ -337,8 +337,8 @@
             left: 100%;
         }
 
-        .btn:hover,
-        .btn:active {
+        .btn:not(:disabled):hover,
+        .btn:not(:disabled):active {
             transform: scale(1.05);
             box-shadow: 0 12px 30px rgba(124, 58, 237, 0.5);
             background: linear-gradient(45deg, #8b5cf6, #c084fc);
@@ -549,7 +549,6 @@
             box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
         }
 
-        /* NEW: Feedback for incorrect sentences */
         #sentenceFeedback {
             margin-top: -20px;
             margin-bottom: 20px;
@@ -655,13 +654,13 @@
         }
 
 
-        .pronunciation-btn:hover {
+        .pronunciation-btn:not(:disabled):hover {
             transform: scale(1.05);
             box-shadow: 0 12px 25px rgba(5, 150, 105, 0.5);
             background: linear-gradient(45deg, #047857, #059669);
         }
         
-        .pronunciation-btn#recordBtn.recording:hover {
+        .pronunciation-btn#recordBtn.recording:not(:disabled):hover {
              background: linear-gradient(45deg, #dc2626, #ef4444);
              box-shadow: 0 12px 25px rgba(220, 38, 38, 0.5);
         }
@@ -688,29 +687,45 @@
             50% { opacity: 0.5; transform: scale(0.7); }
             100% { opacity: 1; transform: scale(1); }
         }
-
-        .score-feedback {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
+        
+        /* NEW: Grammar Section Styles */
+        .grammar-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .grammar-rule {
+            background: rgba(0, 0, 0, 0.3);
             border: 2px solid rgba(147, 51, 234, 0.3);
+            border-radius: 20px;
+            margin-bottom: 25px;
+            padding: 25px;
+        }
+        
+        .grammar-rule h3 {
+            color: #d8b4fe;
+            margin-bottom: 15px;
+            font-size: clamp(1.2em, 3vw, 1.5em);
+        }
+        
+        .grammar-rule p {
+            color: #c7d2fe;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .grammar-example {
+            background: rgba(15, 15, 35, 0.6);
+            padding: 15px;
+            border-radius: 15px;
+            border-left: 4px solid #a855f7;
+            font-style: italic;
+        }
+        
+        .grammar-example p {
+            margin: 0;
         }
 
-        .score-feedback.excellent {
-            border-color: #22c55e;
-            background: rgba(34, 197, 94, 0.1);
-        }
-
-        .score-feedback.good {
-            border-color: #f59e0b;
-            background: rgba(245, 158, 11, 0.1);
-        }
-
-        .score-feedback.needs-practice {
-            border-color: #ef4444;
-            background: rgba(239, 68, 68, 0.1);
-        }
 
         @media (max-width: 768px) {
             .container { padding: 10px; }
@@ -780,7 +795,7 @@
                 <div>
                     <div class="activity-icon">📝</div>
                     <h3>Gramatyka<br><small>Грамматика</small></h3>
-                    <p>Naucz się polskiej gramatyki krok po kroku. Od podstaw do zaawansowanego poziomu.<br>Изучайте польскую грамматику шаг за шагом. От основ до продвинутого уровня.</p>
+                    <p>Naucz się kluczowych zasad gramatyki dla Twojego poziomu. Zobacz przykłady.<br>Изучите ключевые правила грамматики для вашего уровня. Посмотрите примеры.</p>
                 </div>
                 <button class="btn">Ucz się / Изучать</button>
             </div>
@@ -789,7 +804,7 @@
                 <div>
                     <div class="activity-icon">🎤</div>
                     <h3>Wymowa<br><small>Произношение</small></h3>
-                    <p>Ćwicz polską wymowę. Nagraj się i porównaj z natywnymi mówiącymi.<br>Тренируйте польское произношение. Записывайтесь и сравнивайте с носителями.</p>
+                    <p>Ćwicz wymowę dla samokontroli. Nagraj i porównaj z oryginałem.<br>Тренируйте произношение для самоконтроля. Запишите и сравните с оригиналом.</p>
                 </div>
                 <button class="btn">Ćwicz / Тренироваться</button>
             </div>
@@ -807,7 +822,7 @@
                 <div>
                     <div class="activity-icon">🧠</div>
                     <h3>Quiz<br><small>Викторина</small></h3>
-                    <p>Sprawdź swoją wiedzę słownictwa polskiego. Wybierz poprawne tłumaczenie.<br>Проверьте свои знания польской лексики. Выберите правильный перевод.</p>
+                    <p>Sprawdź swoją wiedzę słownictwa. Wybierz poprawne tłumaczenie.<br>Проверьте свои знания лексики. Выберите правильный перевод.</p>
                 </div>
                 <button class="btn">Rozpocznij Test<br><small>Начать тест</small></button>
             </div>
@@ -816,7 +831,7 @@
                 <div>
                     <div class="activity-icon">✍️</div>
                     <h3>Budowa zdań<br><small>Построение предложений</small></h3>
-                    <p>Składaj zdania z podanych słów. Przeciągnij lub kliknij słowa.<br>Составляйте предложения из данных слов. Перетаскивайте или нажимайте на слова.</p>
+                    <p>Składaj zdania z podanych słów, w tym ze słów-pułapek.<br>Составляйте предложения из данных слов, включая слова-ловушки.</p>
                 </div>
                 <button class="btn">Ćwicz<br><small>Тренироваться</small></button>
             </div>
@@ -834,13 +849,10 @@
 
         <div id="grammarActivity" class="activity-container">
             <h2 id="grammarHeader">📝 Gramatyka / Грамматика</h2>
-            <div style="text-align: center;">
-                <div class="flashcard" style="margin: 30px auto; cursor: default;">
-                    <div class="flashcard-word" style="font-size: 2em; margin-bottom: 20px;">Gramatyka w budowie</div>
-                    <div class="flashcard-translation" style="display: block;">Грамматический раздел в разработке</div>
-                    <p style="margin-top: 20px; color: #c7d2fe;">Wkrótce będziesz mógł uczyć się polskiej gramatyki!<br>Скоро вы сможете изучать польскую грамматику!</p>
+            <div id="grammarContainer" class="grammar-container">
                 </div>
-                <button class="btn" onclick="backToMenu()" style="width: auto; margin: 20px auto 0;">Menu<br><small>Меню</small></button>
+            <div style="text-align: center; margin-top: 30px;">
+                 <button class="btn" onclick="backToMenu()" style="width: auto; margin: 0 auto;">Menu<br><small>Меню</small></button>
             </div>
         </div>
 
@@ -852,6 +864,8 @@
                     <div class="pronunciation-translation" id="pronunciationTranslation"></div>
                 </div>
                 
+                <p style="margin: 20px 0; color: #c7d2fe;">1. Słuchaj. 2. Nagraj. 3. Odtwórz i porównaj.<br>1. Слушайте. 2. Запишите. 3. Воспроизведите и сравните.</p>
+
                 <div class="pronunciation-controls">
                     <button class="pronunciation-btn" onclick="playNativeAudio()">
                         🔊 Słuchaj / Слушать
@@ -864,16 +878,8 @@
                         ▶️ Odtwórz / Воспроизвести
                     </button>
                 </div>
-
-                <div id="pronunciationFeedback" class="score-feedback" style="display: none;">
-                    <h4 id="feedbackTitle"></h4>
-                    <p id="feedbackText"></p>
-                    <div style="margin-top: 15px;">
-                        <strong>Ocena (symulacja): <span id="pronunciationScore"></span>/5</strong>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin: 20px 0; display: flex; justify-content: center; gap: 15px;">
+                
+                <div style="text-align: center; margin: 30px 0; display: flex; justify-content: center; gap: 15px;">
                     <button class="btn" onclick="nextPronunciationWord()" id="nextPronunciationBtn" style="width: auto; display: inline-block;" disabled>Następne<br><small>Следующее</small></button>
                     <button class="btn" onclick="backToMenu()" style="width: auto; display: inline-block;">Menu<br><small>Меню</small></button>
                 </div>
@@ -933,7 +939,7 @@
                 </div>
                 <p style="color: #c7d2fe; margin-bottom: 20px;">Twoja odpowiedź (przeciągnij lub kliknij słowa) / Ваш ответ (перетащите или нажмите на слова):</p>
                 <div class="sentence-drop-area" id="sentenceDropArea"></div>
-                 <div id="sentenceFeedback" style="display: none;"></div>
+                <div id="sentenceFeedback" style="display: none;"></div>
                 <p style="color: #c7d2fe; margin-top: 30px; margin-bottom: 10px;">Bank słów / Банк слов:</p>
                 <div class="word-bank" id="wordBank"></div>
                 <div style="text-align: center; margin: 30px 0; display: flex; justify-content: center; gap: 15px;">
@@ -946,56 +952,63 @@
     </div>
 
     <script>
-        // Learning data
-        const learningData = {
-            A1: {
-                vocabulary: [
-                    { polish: 'tak', russian: 'да' }, { polish: 'nie', russian: 'нет' }, { polish: 'proszę', russian: 'пожалуйста' }, { polish: 'dziękuję', russian: 'спасибо' }, { polish: 'dom', russian: 'дом' }, { polish: 'kot', russian: 'кот' }, { polish: 'pies', russian: 'собака' }, { polish: 'woda', russian: 'вода' }, { polish: 'chleb', russian: 'хлеб' }, { polish: 'kobieta', russian: 'женщина' }, { polish: 'mężczyzna', russian: 'мужчина' }, { polish: 'iść', russian: 'идти' }, { polish: 'mieć', russian: 'иметь' }, { polish: 'być', russian: 'быть' },
-                ],
-                sentences: [
-                    { polish: "To jest dom", russian: "Это дом", words: ["To", "jest", "dom"] }, { polish: "Kot pije mleko", russian: "Кот пьет молоко", words: ["Kot", "pije", "mleko"] }, { polish: "To jest kobieta", russian: "Это женщина", words: ["To", "jest", "kobieta"] }, { polish: "Mam pytanie", russian: "У меня есть вопрос", words: ["Mam", "pytanie"] },
-                ]
-            },
-            A2: {
-                vocabulary: [
-                    { polish: 'sklep', russian: 'магазин' }, { polish: 'restauracja', russian: 'ресторан' }, { polish: 'bilet', russian: 'билет' }, { polish: 'dworzec', russian: 'вокзал' }, { polish: 'lotnisko', russian: 'аэропорт' }, { polish: 'lekarz', russian: 'врач' }, { polish: 'pogoda', russian: 'погода' }, { polish: 'wczoraj', russian: 'вчера' }, { polish: 'jutro', russian: 'завтра' }, { polish: 'rozmawiać', russian: 'разговаривать' }, { polish: 'podróżować', russian: 'путешествовать' }, { polish: 'zamówić', russian: 'заказать' },
-                ],
-                sentences: [
-                    { polish: "Chciałbym zamówić kawę", russian: "Я хотел бы заказать кофе", words: ["Chciałbym", "zamówić", "kawę"] }, { polish: "Gdzie jest najbliższy sklep?", russian: "Где ближайший магазин?", words: ["Gdzie", "jest", "najbliższy", "sklep?"] }, { polish: "Jaka jest dziś pogoda?", russian: "Какая сегодня погода?", words: ["Jaka", "jest", "dziś", "pogoda?"] }, { polish: "Muszę iść do lekarza", russian: "Мне нужно идти к врачу", words: ["Muszę", "iść", "do", "lekarza"] },
-                ]
-            },
-            B1: {
-                vocabulary: [
-                    { polish: 'zdanie', russian: 'мнение' }, { polish: 'możliwość', russian: 'возможность' }, { polish: 'problem', russian: 'проблема' }, { polish: 'rozwiązanie', russian: 'решение' }, { polish: 'wykształcenie', russian: 'образование' }, { polish: 'praca', russian: 'работа' }, { polish: 'zainteresowania', russian: 'увлечения' }, { polish: 'osiągnąć', russian: 'достичь' }, { polish: 'wyjaśnić', russian: 'объяснить' }, { polish: 'porównać', russian: 'сравнить' }, { polish: 'przyszłość', russian: 'будущее' },
-                ],
-                sentences: [
-                    { polish: "Moim zdaniem to dobry pomysł", russian: "По моему мнению, это хорошая идея", words: ["Moim", "zdaniem", "to", "dobry", "pomysł"] }, { polish: "Musimy znaleźć rozwiązanie tego problemu", russian: "Мы должны найти решение этой проблемы", words: ["Musimy", "znaleźć", "rozwiązanie", "tego", "problemu"] }, { polish: "Jakie masz plany na przyszłość?", russian: "Какие у тебя планы на будущее?", words: ["Jakie", "masz", "plany", "na", "przyszłość?"] }, { polish: "Potrafię płynnie mówić po angielsku", russian: "Я могу свободно говорить по-английски", words: ["Potrafię", "płynnie", "mówić", "po", "angielsku"] },
-                ]
-            },
-            B2: {
-                vocabulary: [
-                    { polish: 'świadomość', russian: 'осознание' }, { polish: 'społeczeństwo', russian: 'общество' }, { polish: 'gospodarka', russian: 'экономика' }, { polish: 'środowisko', russian: 'окружающая среда' }, { polish: 'wpływ', russian: 'влияние' }, { polish: 'analizować', russian: 'анализировать' }, { polish: 'krytykować', russian: 'критиковать' }, { polish: 'argument', russian: 'аргумент' }, { polish: 'zaawansowany', russian: 'продвинутый' }, { polish: 'skuteczny', russian: 'эффективный' },
-                ],
-                sentences: [
-                    { polish: "Należy analizować wpływ technologii na społeczeństwo", russian: "Следует анализировать влияние технологий на общество", words: ["Należy", "analizować", "wpływ", "technologii", "na", "społeczeństwo"] }, { polish: "Ochrona środowiska jest kluczowym wyzwaniem", russian: "Защита окружающей среды является ключевым вызовом", words: ["Ochrona", "środowiska", "jest", "kluczowym", "wyzwaniem"] }, { polish: "Twoje argumenty są bardzo przekonujące", russian: "Твои аргументы очень убедительны", words: ["Twoje", "argumenty", "są", "bardzo", "przekonujące"] },
-                ]
-            },
-            C1: {
-                vocabulary: [
-                    { polish: 'subtelny', russian: 'тонкий, деликатный' }, { polish: 'jednoznaczny', russian: 'однозначный' }, { polish: 'wszechstronny', russian: 'всесторонний' }, { polish: 'konsekwencja', russian: 'последствие' }, { polish: 'interpretować', russian: 'интерпретировать' }, { polish: 'kwestionować', russian: 'ставить под сомнение' }, { polish: 'hipoteza', russian: 'гипотеза' }, { polish: 'paradygmat', russian: 'парадигма' }, { polish: 'retoryka', russian: 'риторика' }, { polish: 'syntéza', russian: 'синтез' },
-                ],
-                sentences: [
-                    { polish: "Jego retoryka była subtelna, ale skuteczna", russian: "Его риторика была тонкой, но эффективной", words: ["Jego", "retoryka", "była", "subtelna", "ale", "skuteczna"] }, { polish: "Należy wszechstronnie zbadać konsekwencje tej decyzji", russian: "Следует всесторонне изучить последствия этого решения", words: ["Należy", "wszechstronnie", "zbadać", "konsekwencje", "tej", "decyzji"] }, { polish: "Ta hipoteza wymaga dalszych badań empirycznych", russian: "Эта гипотеза требует дальнейших эмпирических исследований", words: ["Ta", "hipoteza", "wymaga", "dalszych", "badań", "empirycznych"] },
-                ]
-            },
-            C2: {
-                vocabulary: [
-                    { polish: 'ambiwalentny', russian: 'амбивалентный' }, { polish: 'dywagacja', russian: 'отвлеченное рассуждение' }, { polish: 'efemeryczny', russian: 'эфемерный' }, { polish: 'kognitywistyka', russian: 'когнитивистика' }, { polish: 'prekursor', russian: 'предшественник' }, { polish: 'par excellence', russian: 'в высшей степени' }, { polish: 'erudycja', russian: 'эрудиция' }, { polish: 'solipsyzm', russian: 'солипсизм' }, { polish: 'onomatopeja', russian: 'ономатопея' },
-                ],
-                sentences: [
-                    { polish: "Jego erudycyjne dywagacje były fascynujące dla słuchaczy", russian: "Его эрудированные отвлеченные рассуждения были увлекательны для слушателей", words: ["Jego", "erudycyjne", "dywagacje", "były", "fascynujące", "dla", "słuchaczy"] }, { polish: "Jego stosunek do tej kwestii był wysoce ambiwalentny", russian: "Его отношение к этому вопросу было весьма амбивалентным", words: ["Jego", "stosunek", "do", "tej", "kwestii", "był", "wysoce", "ambiwalentny"] }, { polish: "Był to artysta par excellence, prawdziwy prekursor swojego nurtu", russian: "Это был художник в высшей степени, настоящий предшественник своего течения", words: ["Był", "to", "artysta", "par excellence", "prawdziwy", "prekursor", "swojego", "nurtu"] },
-                ]
-            }
+        const learningData = {A1:{vocabulary:[{polish:"tak",russian:"да"},{polish:"nie",russian:"нет"},{polish:"proszę",russian:"пожалуйста"},{polish:"dziękuję",russian:"спасибо"},{polish:"dom",russian:"дом"},{polish:"kot",russian:"кот"},{polish:"pies",russian:"собака"},{polish:"woda",russian:"вода"},{polish:"chleb",russian:"хлеб"},{polish:"kobieta",russian:"женщина"},{polish:"mężczyzna",russian:"мужчина"},{polish:"iść",russian:"идти"},{polish:"mieć",russian:"иметь"},{polish:"być",russian:"быть"}],sentences:[{polish:"To jest dom",russian:"Это дом",words:["To","jest","dom"]},{polish:"Kot pije mleko",russian:"Кот пьет молоко",words:["Kot","pije","mleko"]},{polish:"To jest kobieta",russian:"Это женщина",words:["To","jest","kobieta"]},{polish:"Mam pytanie",russian:"У меня есть вопрос",words:["Mam","pytanie"]}]},A2:{vocabulary:[{polish:"sklep",russian:"магазин"},{polish:"restauracja",russian:"ресторан"},{polish:"bilet",russian:"билет"},{polish:"dworzec",russian:"вокзал"},{polish:"lotnisko",russian:"аэропорт"},{polish:"lekarz",russian:"врач"},{polish:"pogoda",russian:"погода"},{polish:"wczoraj",russian:"вчера"},{polish:"jutro",russian:"завтра"},{polish:"rozmawiać",russian:"разговаривать"},{polish:"podróżować",russian:"путешествовать"},{polish:"zamówić",russian:"заказать"}],sentences:[{polish:"Chciałbym zamówić kawę",russian:"Я хотел бы заказать кофе",words:["Chciałbym","zamówić","kawę"]},{polish:"Gdzie jest najbliższy sklep?",russian:"Где ближайший магазин?",words:["Gdzie","jest","najbliższy","sklep?"]},{polish:"Jaka jest dziś pogoda?",russian:"Какая сегодня погода?",words:["Jaka","jest","dziś","pogoda?"]},{polish:"Muszę iść do lekarza",russian:"Мне нужно идти к врачу",words:["Muszę","iść","do","lekarza"]}]},B1:{vocabulary:[{polish:"zdanie",russian:"мнение"},{polish:"możliwość",russian:"возможность"},{polish:"problem",russian:"проблема"},{polish:"rozwiązanie",russian:"решение"},{polish:"wykształcenie",russian:"образование"},{polish:"praca",russian:"работа"},{polish:"zainteresowania",russian:"увлечения"},{polish:"osiągnąć",russian:"достичь"},{polish:"wyjaśnić",russian:"объяснить"},{polish:"porównać",russian:"сравнить"},{polish:"przyszłość",russian:"будущее"}],sentences:[{polish:"Moim zdaniem to dobry pomysł",russian:"По моему мнению, это хорошая идея",words:["Moim","zdaniem","to","dobry","pomysł"]},{polish:"Musimy znaleźć rozwiązanie tego problemu",russian:"Мы должны найти решение этой проблемы",words:["Musimy","znaleźć","rozwiązanie","tego","problemu"]},{polish:"Jakie masz plany na przyszłość?",russian:"Какие у тебя планы на будущее?",words:["Jakie","masz","plany","na","przyszłość?"]},{polish:"Potrafię płynnie mówić po angielsku",russian:"Я могу свободно говорить по-английски",words:["Potrafię","płynnie","mówić","po","angielsku"]}]},B2:{vocabulary:[{polish:"świadomość",russian:"осознание"},{polish:"społeczeństwo",russian:"общество"},{polish:"gospodarka",russian:"экономика"},{polish:"środowisko",russian:"окружающая среда"},{polish:"wpływ",russian:"влияние"},{polish:"analizować",russian:"анализировать"},{polish:"krytykować",russian:"критиковать"},{polish:"argument",russian:"аргумент"},{polish:"zaawansowany",russian:"продвинутый"},{polish:"skuteczny",russian:"эффективный"}],sentences:[{polish:"Należy analizować wpływ technologii na społeczeństwo",russian:"Следует анализировать влияние технологий на общество",words:["Należy","analizować","wpływ","technologii","na","społeczeństwo"]},{polish:"Ochrona środowiska jest kluczowym wyzwaniem",russian:"Защита окружающей среды является ключевым вызовом",words:["Ochrona","środowiska","jest","kluczowym","wyzwaniem"]},{polish:"Twoje argumenty są bardzo przekonujące",russian:"Твои аргументы очень убедительны",words:["Twoje","argumenty","są","bardzo","przekonujące"]}]},C1:{vocabulary:[{polish:"subtelny",russian:"тонкий, деликатный"},{polish:"jednoznaczny",russian:"однозначный"},{polish:"wszechstronny",russian:"всесторонний"},{polish:"konsekwencja",russian:"последствие"},{polish:"interpretować",russian:"интерпретировать"},{polish:"kwestionować",russian:"ставить под сомнение"},{polish:"hipoteza",russian:"гипотеза"},{polish:"paradygmat",russian:"парадигма"},{polish:"retoryka",russian:"риторика"},{polish:"syntéza",russian:"синтез"}],sentences:[{polish:"Jego retoryka była subtelna, ale skuteczna",russian:"Его риторика была тонкой, но эффективной",words:["Jego","retoryka","była","subtelna","ale","skuteczna"]},{polish:"Należy wszechstronnie zbadać konsekwencje tej decyzji",russian:"Следует всесторонне изучить последствия этого решения",words:["Należy","wszechstronnie","zbadać","konsekwencje","tej","decyzji"]},{polish:"Ta hipoteza wymaga dalszych badań empirycznych",russian:"Эта гипотеза требует дальнейших эмпирических исследований",words:["Ta","hipoteza","wymaga","dalszych","badań","empirycznych"]}]},C2:{vocabulary:[{polish:"ambiwalentny",russian:"амбивалентный"},{polish:"dywagacja",russian:"отвлеченное рассуждение"},{polish:"efemeryczny",russian:"эфемерный"},{polish:"kognitywistyka",russian:"когнитивистика"},{polish:"prekursor",russian:"предшественник"},{polish:"par excellence",russian:"в высшей степени"},{polish:"erudycja",russian:"эрудиция"},{polish:"solipsyzm",russian:"солипсизм"},{polish:"onomatopeja",russian:"ономатопея"}],sentences:[{polish:"Jego erudycyjne dywagacje były fascynujące dla słuchaczy",russian:"Его эрудированные отвлеченные рассуждения были увлекательны для слушателей",words:["Jego","erudycyjne","dywagacje","były","fascynujące","dla","słuchaczy"]},{polish:"Jego stosunek do tej kwestii był wysoce ambiwalentny",russian:"Его отношение к этому вопросу было весьма амбивалентным",words:["Jego","stosunek","do","tej","kwestii","był","wysoce","ambiwalentny"]},{polish:"Był to artysta par excellence, prawdziwy prekursor swojego nurtu",russian:"Это был художник в высшей степени, настоящий предшественник своего течения",words:["Był","to","artysta","par excellence","prawdziwy","prekursor","swojego","nurtu"]}]}};
+
+        // NEW: Grammar Data
+        const grammarData = {
+            A1: [
+                {
+                    title: "Konstrukcja 'To jest...' / Конструкция 'To jest...'",
+                    explanation: "To jedna z najprostszych i najważniejszych konstrukcji. Używamy jej, aby nazwać lub wskazać na przedmiot lub osobę. 'To' znaczy 'это', a 'jest' to forma czasownika 'być' (быть) dla trzeciej osoby liczby pojedynczej (on, ona, ono).<br><br>Это одна из самых простых и важных конструкций. Мы используем ее, чтобы назвать или указать на предмет или человека. 'To' означает 'это', а 'jest' — это форма глагола 'być' (быть) для третьего лица единственного числа (он, она, оно).",
+                    example: "To jest dom."
+                },
+                {
+                    title: "Proste zdania i czasowniki / Простые предложения и глаголы",
+                    explanation: "W języku polskim zdanie często buduje się w kolejności: Podmiot - Orzeczenie - Dopełnienie (SVO). Orzeczenie (czasownik) musi być uzgodnione z podmiotem.<br><br>В польском языке предложение часто строится в порядке: Подлежащее - Сказуемое - Дополнение (SVO). Сказуемое (глагол) должно быть согласовано с подлежащим.",
+                    example: "Kot pije mleko."
+                }
+            ],
+            A2: [
+                {
+                    title: "Pytania o miejsce i cechy / Вопросы о месте и свойствах",
+                    explanation: "Do zadawania pytań używamy słów pytających. 'Gdzie' pyta o miejsce. 'Jaki / Jaka / Jakie' pyta o cechę i musi być uzgodnione z rodzajem rzeczownika.<br><br>Для задания вопросов мы используем вопросительные слова. 'Gdzie' спрашивает о месте. 'Jaki / Jaka / Jakie' (какой/какая/какое) спрашивает о свойстве и должно быть согласовано с родом существительного.",
+                    example: "Gdzie jest najbliższy sklep?"
+                },
+                {
+                    title: "Czasowniki modalne 'chcieć', 'musieć' / Модальные глаголы 'chcieć', 'musieć'",
+                    explanation: "Czasowniki takie jak 'chcieć' (хотеть) i 'musieć' (быть должным) łączą się z bezokolicznikiem (infinitive) innego czasownika. 'Chciałbym' to forma warunkowa od 'chcieć' - 'я хотел бы'.<br><br>Глаголы, такие как 'chcieć' (хотеть) и 'musieć' (быть должным), сочетаются с инфинитивом другого глагола. 'Chciałbym' — это условная форма от 'chcieć' - 'я хотел бы'.",
+                    example: "Chciałbym zamówić kawę."
+                },
+                 {
+                    title: "Pierwsze spotkanie z przypadkami: Dopełniacz / Первая встреча с падежами: Родительный падеж",
+                    explanation: "W języku polskim rzeczowniki zmieniają swoje końcówki w zależności od ich funkcji w zdaniu (przypadki). Po przyimku 'do' (к, в) używamy Dopełniacza. Zwróć uwagę, jak 'lekarz' zmienia się na 'lekarza'.<br><br>В польском языке существительные меняют свои окончания в зависимости от их функции в предложении (падежи). После предлога 'do' (к, в) мы используем Родительный падеж. Обратите внимание, как 'lekarz' меняется на 'lekarza'.",
+                    example: "Muszę iść do lekarza."
+                }
+            ],
+            B1: [
+                {
+                    title: "Wyrażanie opinii: Narzędnik / Выражение мнения: Творительный падеж",
+                    explanation: "Konstrukcja 'Moim zdaniem' (По моему мнению) wykorzystuje przypadek Narzędnik. 'Moim' to forma od 'mój', a 'zdaniem' od 'zdanie'. Jest to standardowy sposób na wyrażenie swojego punktu widzenia.<br><br>Конструкция 'Moim zdaniem' (По моему мнению) использует Творительный падеж. 'Moim' — это форма от 'mój', а 'zdaniem' от 'zdanie'. Это стандартный способ выражения своей точки зрения.",
+                    example: "Moim zdaniem to dobry pomysł."
+                },
+                 {
+                    title: "Liczba mnoga i Dopełniacz / Множественное число и Родительный падеж",
+                    explanation: "W zdaniu 'Musimy znaleźć rozwiązanie tego problemu', słowo 'problemu' jest w Dopełniaczu liczby pojedynczej po słowie 'rozwiązanie' (rozwiązanie CZEGO? -> problemu). W liczbie mnogiej często używamy Dopełniacza po słowach oznaczających brak lub ilość, np. 'nie mam problemów'.<br><br>В предложении 'Musimy znaleźć rozwiązanie tego problemu', слово 'problemu' стоит в Родительном падеже единственного числа после слова 'rozwiązanie' (решение ЧЕГО? -> problemu). Во множественном числе мы часто используем Родительный падеж после слов, означающих отсутствие или количество, например, 'nie mam problemów' (у меня нет проблем).",
+                    example: "Musimy znaleźć rozwiązanie tego problemu."
+                }
+            ],
+             B2: [
+                {
+                    title: "Konstrukcje bezosobowe z 'Należy' / Безличные конструкции с 'Należy'",
+                    explanation: "'Należy' to bezosobowa forma oznaczająca 'следует' lub 'нужно'. Po niej zawsze występuje bezokolicznik. Jest to formalny i obiektywny sposób wyrażania konieczności lub rekomendacji.<br><br>'Należy' — это безличная форма, означающая 'следует' или 'нужно'. После нее всегда идет инфинитив. Это формальный и объективный способ выражения необходимости или рекомендации.",
+                    example: "Należy analizować wpływ technologii na społeczeństwo."
+                },
+                {
+                     title: "Rzeczowniki odczasownikowe / Отглагольные существительные",
+                     explanation: "Słowo 'Ochrona' pochodzi od czasownika 'ochraniać'. Takie rzeczowniki są bardzo popularne w języku formalnym i technicznym. Opisują one działanie lub jego rezultat. Inne przykłady: 'analizowanie', 'wpływanie'.<br><br>Слово 'Ochrona' (защита) происходит от глагола 'ochraniać' (защищать). Такие отглагольные существительные очень популярны в формальном и техническом языке. Они описывают действие или его результат. Другие примеры: 'analizowanie' (анализ), 'wpływanie' (влияние).",
+                     example: "Ochrona środowiska jest kluczowym wyzwaniem."
+                }
+            ]
         };
 
         // Global variables
@@ -1016,7 +1029,6 @@
         let isRecording = false;
         let stream;
         
-        // Default stats object
         let stats = {
             wordsLearned: 0,
             sentencesCompleted: 0,
@@ -1049,7 +1061,7 @@
 
             } catch (e) {
                 console.error("Could not load progress from localStorage:", e);
-                setLevel('A1'); // fallback to default
+                setLevel('A1');
             }
             updateStats();
         }
@@ -1071,8 +1083,7 @@
             currentQuizIndex = 0;
             currentSentenceIndex = 0;
             
-            console.log(`Level changed to ${level}. Loaded ${vocabulary.length} words and ${sentenceData.length} sentences.`);
-            saveProgress(); // Save new level choice
+            saveProgress();
             backToMenu();
         }
 
@@ -1120,6 +1131,21 @@
         function startGrammar() {
             showActivity('grammarActivity');
             updateActivityHeader('grammarHeader', '📝 Gramatyka / Грамматика');
+            
+            const container = document.getElementById('grammarContainer');
+            container.innerHTML = '';
+            const rules = grammarData[currentLevel] || [{title: "Brak danych / Нет данных", explanation: "Dla tego poziomu nie przygotowano jeszcze zasad gramatyki.<br><br>Для этого уровня правила грамматики еще не подготовлены.", example: ""}];
+
+            rules.forEach(rule => {
+                const ruleDiv = document.createElement('div');
+                ruleDiv.className = 'grammar-rule';
+                ruleDiv.innerHTML = `
+                    <h3>${rule.title}</h3>
+                    <p>${rule.explanation}</p>
+                    ${rule.example ? `<div class="grammar-example"><p><i>${rule.example}</i></p></div>` : ''}
+                `;
+                container.appendChild(ruleDiv);
+            });
         }
 
         function startPronunciation() {
@@ -1167,8 +1193,9 @@
             const word = vocabulary[currentCardIndex];
             document.getElementById('pronunciationWord').textContent = word.polish;
             document.getElementById('pronunciationTranslation').textContent = word.russian;
-            resetPronunciationFeedback();
-            document.getElementById('nextPronunciationBtn').disabled = true; // Disable next button
+            document.getElementById('playbackBtn').disabled = true;
+            userRecordingBlob = null;
+            document.getElementById('nextPronunciationBtn').disabled = true;
         }
         
         function toggleRecording() {
@@ -1199,9 +1226,12 @@
                 mediaRecorder.onstop = () => {
                     userRecordingBlob = new Blob(audioChunks, { type: 'audio/wav' });
                     document.getElementById('playbackBtn').disabled = false;
-                    analyzePronunciation();
-                    // Stop all media tracks to release the microphone
                     stream.getTracks().forEach(track => track.stop());
+                    
+                    // Enable next button after recording is done
+                    document.getElementById('nextPronunciationBtn').disabled = false;
+                    stats.exercisesCompleted++;
+                    updateStats();
                 };
 
                 mediaRecorder.start();
@@ -1244,55 +1274,6 @@
                 audio.play();
             }
         }
-        
-        function analyzePronunciation() {
-            // NOTE: This is a SIMULATION. Real pronunciation analysis requires a server-side API.
-            const score = Math.floor(Math.random() * 4) + 2; // Random score from 2 to 5
-            
-            const feedbackDiv = document.getElementById('pronunciationFeedback');
-            const feedbackTitle = document.getElementById('feedbackTitle');
-            const feedbackText = document.getElementById('feedbackText');
-            const scoreElement = document.getElementById('pronunciationScore');
-            
-            let feedbackClass, title, text;
-            if(score >= 4) {
-                 feedbackClass = 'excellent';
-                 title = 'Dobrze! / Хорошо!';
-                 text = 'Dobra robota! Możesz przejść dalej. / Хорошая работа! Можете идти дальше.';
-            } else if (score === 3) {
-                feedbackClass = 'good';
-                title = 'Nieźle / Неплохо';
-                text = 'Dobra próba, ale jest miejsce na poprawę. / Хорошая попытка, но есть куда стремиться.';
-            } else {
-                feedbackClass = 'needs-practice';
-                title = 'Potrzebujesz więcej ćwiczeń / Нужно больше практики';
-                text = 'Posłuchaj wzorcowego nagrania i spróbuj ponownie. / Послушайте эталонную запись и попробуйте снова.';
-            }
-            
-            feedbackDiv.className = `score-feedback ${feedbackClass}`;
-            feedbackTitle.textContent = title;
-            feedbackText.textContent = text;
-            scoreElement.textContent = score;
-            feedbackDiv.style.display = 'block';
-            
-            stats.totalAnswers++;
-            if (score >= 4) {
-                stats.correctAnswers++;
-                stats.wordsLearned++;
-            }
-            stats.exercisesCompleted++;
-            updateStats();
-            
-            // Enable the "Next" button after an attempt
-            document.getElementById('nextPronunciationBtn').disabled = false;
-        }
-
-
-        function resetPronunciationFeedback() {
-            document.getElementById('pronunciationFeedback').style.display = 'none';
-            document.getElementById('playbackBtn').disabled = true;
-            userRecordingBlob = null;
-        }
 
         function nextPronunciationWord() {
             currentCardIndex = (currentCardIndex + 1) % vocabulary.length;
@@ -1318,7 +1299,7 @@
             document.getElementById('flashcardWord').textContent = card.polish;
             document.getElementById('flashcardTranslation').textContent = card.russian;
             document.getElementById('flashcardTranslation').style.display = 'none';
-            document.getElementById('nextCardBtn').disabled = true; // Disable until flipped
+            document.getElementById('nextCardBtn').disabled = true;
         }
 
         function flipCard() {
@@ -1326,7 +1307,7 @@
             translation.style.display = translation.style.display === 'none' ? 'block' : 'none';
             if (!cardFlipped) {
                 cardFlipped = true;
-                document.getElementById('nextCardBtn').disabled = false; // Enable next button
+                document.getElementById('nextCardBtn').disabled = false;
             }
         }
 
@@ -1432,7 +1413,19 @@
             feedbackArea.style.display = 'none';
             dropArea.classList.remove('correct', 'incorrect');
 
-            let allWords = [...sentence.words];
+            const correctWords = [...sentence.words];
+            const distractorWords = [];
+            // Add 2 or 3 distractor words
+            const numDistractors = Math.min(3, vocabulary.length - correctWords.length);
+            
+            while(distractorWords.length < numDistractors && vocabulary.length > correctWords.length) {
+                const randomWord = vocabulary[Math.floor(Math.random() * vocabulary.length)].polish;
+                if(!correctWords.includes(randomWord) && !distractorWords.includes(randomWord)) {
+                    distractorWords.push(randomWord);
+                }
+            }
+
+            let allWords = [...correctWords, ...distractorWords];
             allWords.sort(() => Math.random() - 0.5);
 
             allWords.forEach(word => {
