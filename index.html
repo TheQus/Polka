@@ -685,551 +685,8 @@
 
         @keyframes pulse {
             0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scal            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.5)); }
-            to { filter: drop-shadow(0 0 20px rgba(147, 51, 234, 0.8)); }
-        }
-
-        .header small {
-            font-size: 0.6em;
-            opacity: 0.8;
-            display: block;
-            margin-top: 10px;
-            background: linear-gradient(45deg, #818cf8, #c7d2fe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .progress-section {
-            background: rgba(15, 15, 35, 0.6);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 30px;
-            margin-bottom: 40px;
-            border: 2px solid rgba(147, 51, 234, 0.3);
-            box-shadow:
-                0 25px 50px rgba(0,0,0,0.5),
-                inset 0 1px 0 rgba(255,255,255,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .progress-section h3 {
-            color: #d8b4fe;
-            margin-bottom: 20px;
-            font-size: clamp(1.2em, 3vw, 1.6em);
-            text-align: center;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 25px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 20px;
-            overflow: hidden;
-            margin: 20px 0;
-            position: relative;
-            border: 1px solid rgba(147, 51, 234, 0.3);
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #7c3aed, #a855f7, #c084fc);
-            transition: width 0.8s ease;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: progressShimmer 2s infinite;
-        }
-
-        @keyframes progressShimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .activity-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .activity-card {
-            background: rgba(15, 15, 35, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 30px;
-            border: 2px solid rgba(147, 51, 234, 0.2);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            touch-action: manipulation;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .activity-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(147, 51, 234, 0.1), rgba(79, 70, 229, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .activity-card:hover::before,
-        .activity-card:active::before {
-            opacity: 1;
-        }
-
-        .activity-card:hover,
-        .activity-card:active {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow:
-                0 20px 40px rgba(147, 51, 234, 0.4),
-                0 0 0 1px rgba(147, 51, 234, 0.5);
-            border-color: rgba(147, 51, 234, 0.6);
-        }
-
-        .activity-card h3 {
-            font-size: clamp(1.3em, 3vw, 1.7em);
-            margin-bottom: 15px;
-            color: #d8b4fe;
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        .activity-card p {
-            color: #c7d2fe;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: clamp(0.95em, 2.5vw, 1.1em);
-            flex-grow: 1;
-        }
-
-        .activity-icon {
-            font-size: clamp(2.5em, 5vw, 3.5em);
-            margin-bottom: 20px;
-            display: block;
-            text-align: center;
-            filter: drop-shadow(0 0 15px rgba(147, 51, 234, 0.6));
-        }
-
-        .btn {
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: clamp(1em, 2.5vw, 1.2em);
-            transition: all 0.3s ease;
-            margin: 8px 0 0 0;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            touch-action: manipulation;
-            min-height: 50px;
-            font-weight: 600;
-            display: block;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
-            line-height: 1.3;
-        }
-        
-        .btn small {
-            font-size: 0.8em;
-            font-weight: 400;
-            opacity: 0.9;
-            display: block;
-        }
-
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before,
-        .btn:active::before {
-            left: 100%;
-        }
-
-        .btn:hover,
-        .btn:active {
-            transform: scale(1.05);
-            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.5);
-            background: linear-gradient(45deg, #8b5cf6, #c084fc);
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-
-        .stat-item {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px 15px;
-            border-radius: 20px;
-            text-align: center;
-            border: 2px solid rgba(147, 51, 234, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-item:hover,
-        .stat-item:active {
-            transform: scale(1.05);
-            background: rgba(147, 51, 234, 0.1);
-            border-color: rgba(147, 51, 234, 0.5);
-            box-shadow: 0 10px 25px rgba(147, 51, 234, 0.3);
-        }
-
-        .stat-value {
-            font-size: clamp(1.4em, 3vw, 2em);
-            font-weight: bold;
-            color: #c084fc;
-            margin-bottom: 8px;
-            text-shadow: 0 0 10px rgba(192, 132, 252, 0.5);
-        }
-
-        .stat-item div:last-child {
-            font-size: clamp(0.85em, 2vw, 1em);
-            color: #e0e7ff;
-            opacity: 0.9;
-        }
-
-        #progressText {
-            text-align: center;
-            font-size: clamp(1em, 2.5vw, 1.2em);
-            color: #c7d2fe;
-            position: relative;
-            z-index: 1;
-        }
-
-        .activity-container {
-            display: none;
-            background: rgba(15, 15, 35, 0.8);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 30px;
-            border: 2px solid rgba(147, 51, 234, 0.3);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            margin-bottom: 40px;
-        }
-
-        .activity-container h2 {
-            color: #d8b4fe;
-            margin-bottom: 25px;
-            font-size: clamp(1.5em, 3vw, 2em);
-            text-align: center;
-            text-shadow: 0 0 15px rgba(147, 51, 234, 0.5);
-        }
-
-        .flashcard-container {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .flashcard {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(79, 70, 229, 0.2));
-            border: 2px solid rgba(147, 51, 234, 0.4);
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin: 20px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .flashcard:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 40px rgba(147, 51, 234, 0.3);
-            border-color: rgba(147, 51, 234, 0.6);
-        }
-
-        .flashcard-word {
-            font-size: clamp(2em, 5vw, 3em);
-            color: #c084fc;
-            margin-bottom: 15px;
-            font-weight: bold;
-            text-shadow: 0 0 20px rgba(192, 132, 252, 0.5);
-        }
-
-        .flashcard-translation {
-            font-size: clamp(1.2em, 3vw, 1.8em);
-            color: #e0e7ff;
-            opacity: 0.9;
-        }
-
-        .quiz-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .quiz-question {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            border: 2px solid rgba(147, 51, 234, 0.3);
-            text-align: center;
-        }
-
-        .quiz-question h3 {
-            color: #d8b4fe;
-            margin-bottom: 15px;
-            font-size: clamp(1.3em, 3vw, 1.6em);
-        }
-
-        .quiz-options {
-            display: grid;
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .quiz-option {
-            background: rgba(15, 15, 35, 0.6);
-            border: 2px solid rgba(147, 51, 234, 0.3);
-            color: #e0e7ff;
-            padding: 20px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: clamp(1em, 2.5vw, 1.2em);
-        }
-
-        .quiz-option:hover {
-            background: rgba(147, 51, 234, 0.2);
-            border-color: rgba(147, 51, 234, 0.5);
-            transform: scale(1.02);
-        }
-
-        .quiz-option.correct {
-            background: rgba(34, 197, 94, 0.2);
-            border-color: #22c55e;
-        }
-
-        .quiz-option.incorrect {
-            background: rgba(239, 68, 68, 0.2);
-            border-color: #ef4444;
-        }
-
-        .sentence-builder-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .sentence-translation {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            border: 2px solid rgba(147, 51, 234, 0.3);
-        }
-
-        .sentence-translation p {
-            font-size: clamp(1.1em, 2.5vw, 1.4em);
-            color: #c7d2fe;
-            line-height: 1.5;
-        }
-
-        .sentence-drop-area {
-            background: rgba(0, 0, 0, 0.4);
-            border: 2px dashed rgba(147, 51, 234, 0.5);
-            border-radius: 20px;
-            min-height: 80px;
-            padding: 15px;
-            margin-bottom: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .sentence-drop-area.correct {
-            border-color: #22c55e;
-            box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
-        }
-
-        .sentence-drop-area.incorrect {
-            border-color: #ef4444;
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
-        }
-
-        .word-bank {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            padding: 15px;
-            min-height: 80px;
-        }
-
-        .word-token {
-            background: rgba(15, 15, 35, 0.8);
-            border: 2px solid rgba(147, 51, 234, 0.4);
-            color: #e0e7ff;
-            padding: 10px 20px;
-            border-radius: 12px;
-            cursor: grab;
-            transition: all 0.3s ease;
-            user-select: none;
-        }
-
-        .word-token:hover {
-            transform: scale(1.05);
-            background: rgba(147, 51, 234, 0.2);
-            border-color: rgba(147, 51, 234, 0.6);
-        }
-
-        .word-token.dragging {
-            opacity: 0.5;
-            cursor: grabbing;
-        }
-
-        /* NEW: Pronunciation Activity Styles */
-        .pronunciation-container {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .pronunciation-word {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(79, 70, 229, 0.2));
-            border: 2px solid rgba(147, 51, 234, 0.4);
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin: 20px 0;
-            min-height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .pronunciation-word h3 {
-            font-size: clamp(2.5em, 6vw, 4em);
-            color: #c084fc;
-            margin-bottom: 20px;
-            font-weight: bold;
-            text-shadow: 0 0 20px rgba(192, 132, 252, 0.5);
-        }
-
-        .pronunciation-translation {
-            font-size: clamp(1.2em, 3vw, 1.6em);
-            color: #e0e7ff;
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
-
-        .pronunciation-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-
-        .pronunciation-btn {
-            background: linear-gradient(45deg, #059669, #10b981);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: clamp(1em, 2.5vw, 1.1em);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .pronunciation-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 25px rgba(5, 150, 105, 0.5);
-            background: linear-gradient(45deg, #047857, #059669);
-        }
-
-        .pronunciation-btn:active {
-            transform: scale(0.95);
-        }
-
-        .mic-indicator {
-            width: 12px;
-            height: 12px;
-            background: #ef4444;
-            border-radius: 50%;
-            animation: pulse 1s infinite;
-            display: none;
-        }
-
-        .mic-indicator.active {
-            display: block;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
+            50% { opacity: 0.5; transform: scale(0.7); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         .score-feedback {
@@ -1273,7 +730,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📚 Nauka Polskiego<small>Изучение польского языка</small></h1>
+            <h1>?? Nauka Polskiego<small>Изучение польского языка</small></h1>
         </div>
 
         <div class="level-selection">
@@ -1289,11 +746,11 @@
         </div>
 
         <div class="progress-section">
-            <h3>Twój postęp dziś / Ваш прогресс сегодня</h3>
+            <h3>Twój post??p dzi?? / Ваш прогресс сегодня</h3>
             <div class="stats">
                 <div class="stat-item">
                     <div class="stat-value" id="wordsLearned">0</div>
-                    <div>Słowa / Слова</div>
+                    <div>S??owa / Слова</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="sentencesCompleted">0</div>
@@ -1301,96 +758,94 @@
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="exercisesCompleted">0</div>
-                    <div>Ćwiczenia / Упражнения</div>
+                    <div>??wiczenia / Упражнения</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="streak">1</div>
-                    <div>Dni z rzędu / Дней подряд</div>
+                    <div>Dni z rz??du / Дней подряд</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value" id="accuracy">0%</div>
-                    <div>Dokładność / Точность</div>
+                    <div>Dok??adno???? / Точность</div>
                 </div>
             </div>
             <div class="progress-bar">
                 <div class="progress-fill" id="dailyProgress" style="width: 0%"></div>
             </div>
-            <p id="progressText">Cel dnia: 50 słów / Цель дня: 50 слов (0/50)</p>
+            <p id="progressText">Cel dnia: 50 s??ów / Цель дня: 50 слов (0/50)</p>
         </div>
 
         <div id="mainMenu" class="activity-grid">
             <div class="activity-card" onclick="startGrammar()">
                 <div>
-                    <div class="activity-icon">📝</div>
+                    <div class="activity-icon">??</div>
                     <h3>Gramatyka<br><small>Грамматика</small></h3>
-                    <p>Naucz się polskiej gramatyki krok po kroku. Od podstaw do zaawansowanego poziomu.<br>Изучайте польскую грамматику шаг за шагом. От основ до продвинутого уровня.</p>
+                    <p>Naucz si?? polskiej gramatyki krok po kroku. Od podstaw do zaawansowanego poziomu.<br>Изучайте польскую грамматику шаг за шагом. От основ до продвинутого уровня.</p>
                 </div>
-                <button class="btn">Ucz się / Изучать</button>
+                <button class="btn">Ucz si?? / Изучать</button>
             </div>
 
             <div class="activity-card" onclick="startPronunciation()">
                 <div>
-                    <div class="activity-icon">🎤</div>
+                    <div class="activity-icon">??</div>
                     <h3>Wymowa<br><small>Произношение</small></h3>
-                    <p>Ćwicz polską wymowę. Nagraj się i porównaj z natywnymi mówiącymi.<br>Тренируйте польское произношение. Записывайтесь и сравнивайте с носителями.</p>
+                    <p>??wicz polsk?? wymow??. Nagraj si?? i porównaj z natywnymi mówi??cymi.<br>Тренируйте польское произношение. Записывайтесь и сравнивайте с носителями.</p>
                 </div>
-                <button class="btn">Ćwicz / Тренироваться</button>
+                <button class="btn">??wicz / Тренироваться</button>
             </div>
 
             <div class="activity-card" onclick="startFlashcards()">
                 <div>
-                    <div class="activity-icon">🃏</div>
+                    <div class="activity-icon">??</div>
                     <h3>Fiszki<br><small>Флешкарты</small></h3>
-                    <p>Powtarzaj słownictwo z kartami. Kliknij kartę, aby zobaczyć tłumaczenie.<br>Повторяйте словарь с карточками. Нажмите на карточку, чтобы увидеть перевод.</p>
+                    <p>Powtarzaj s??ownictwo z kartami. Kliknij kart??, aby zobaczy?? t??umaczenie.<br>Повторяйте словарь с карточками. Нажмите на карточку, чтобы увидеть перевод.</p>
                 </div>
                 <button class="btn">Rozpocznij<br><small>Начать</small></button>
             </div>
 
             <div class="activity-card" onclick="startQuiz()">
                 <div>
-                    <div class="activity-icon">🧠</div>
+                    <div class="activity-icon">??</div>
                     <h3>Quiz<br><small>Викторина</small></h3>
-                    <p>Sprawdź swoją wiedzę słownictwa polskiego. Wybierz poprawne tłumaczenie.<br>Проверьте свои знания польской лексики. Выберите правильный перевод.</p>
+                    <p>Sprawd?? swoj?? wiedz?? s??ownictwa polskiego. Wybierz poprawne t??umaczenie.<br>Проверьте свои знания польской лексики. Выберите правильный перевод.</p>
                 </div>
                 <button class="btn">Rozpocznij Test<br><small>Начать тест</small></button>
             </div>
 
             <div class="activity-card" onclick="startSentenceBuilder()">
                 <div>
-                    <div class="activity-icon">✍️</div>
+                    <div class="activity-icon">????</div>
                     <h3>Budowa zdań<br><small>Построение предложений</small></h3>
-                    <p>Składaj zdania z podanych słów. Przeciągnij lub kliknij słowa.<br>Составляйте предложения из данных слов. Перетаскивайте или нажимайте на слова.</p>
+                    <p>Sk??adaj zdania z podanych s??ów. Przeci??gnij lub kliknij s??owa.<br>Составляйте предложения из данных слов. Перетаскивайте или нажимайте на слова.</p>
                 </div>
-                <button class="btn">Ćwicz<br><small>Тренироваться</small></button>
+                <button class="btn">??wicz<br><small>Тренироваться</small></button>
             </div>
 
             <div class="activity-card" onclick="startListening()">
                 <div>
-                    <div class="activity-icon">👂</div>
-                    <h3>Słuchanie<br><small>Аудирование</small></h3>
-                    <p>Ćwicz rozumienie ze słuchu. Słuchaj i powtarzaj polskie słowa.<br>Тренируйте понимание на слух. Слушайте и повторяйте польские слова.</p>
+                    <div class="activity-icon">??</div>
+                    <h3>S??uchanie<br><small>Аудирование</small></h3>
+                    <p>??wicz rozumienie ze s??uchu. S??uchaj i powtarzaj polskie s??owa.<br>Тренируйте понимание на слух. Слушайте и повторяйте польские слова.</p>
                 </div>
-                <button class="btn">Słuchaj<br><small>Слушать</small></button>
+                <button class="btn">S??uchaj<br><small>Слушать</small></button>
             </div>
 
         </div>
 
-        <!-- Grammar Activity -->
         <div id="grammarActivity" class="activity-container">
-            <h2 id="grammarHeader">📝 Gramatyka / Грамматика</h2>
+            <h2 id="grammarHeader">?? Gramatyka / Грамматика</h2>
             <div style="text-align: center;">
                 <div class="flashcard" style="margin: 30px auto; cursor: default;">
                     <div class="flashcard-word" style="font-size: 2em; margin-bottom: 20px;">Gramatyka w budowie</div>
                     <div class="flashcard-translation" style="display: block;">Грамматический раздел в разработке</div>
-                    <p style="margin-top: 20px; color: #c7d2fe;">Wkrótce będziesz mógł uczyć się polskiej gramatyki!<br>Скоро вы сможете изучать польскую грамматику!</p>
+                    <p style="margin-top: 20px; color: #c7d2fe;">Wkrótce b??dziesz móg?? uczy?? si?? polskiej gramatyki!<br>Скоро вы сможете изучать польскую грамматику!</p>
                 </div>
                 <button class="btn" onclick="backToMenu()" style="width: auto; margin: 20px auto 0;">Menu<br><small>Меню</small></button>
             </div>
         </div>
 
-        <!-- Pronunciation Activity -->
         <div id="pronunciationActivity" class="activity-container">
-            <h2 id="pronunciationHeader">🎤 Wymowa / Произношение</h2>
+            <h2 id="pronunciationHeader">?? Wymowa / Произношение</h2>
             <div class="pronunciation-container">
                 <div class="pronunciation-word">
                     <h3 id="pronunciationWord"></h3>
@@ -1399,14 +854,14 @@
                 
                 <div class="pronunciation-controls">
                     <button class="pronunciation-btn" onclick="playNativeAudio()">
-                        🔊 Słuchaj / Слушать
+                        ?? S??uchaj / Слушать
                     </button>
-                    <button class="pronunciation-btn" onclick="startRecording()" id="recordBtn">
+                    <button class="pronunciation-btn" onclick="toggleRecording()" id="recordBtn">
                         <div class="mic-indicator" id="micIndicator"></div>
-                        🎤 Nagraj / Записать
+                        <span id="recordBtnText">?? Nagraj / Записать</span>
                     </button>
-                    <button class="pronunciation-btn" onclick="playUserRecording()" id="playbackBtn" style="opacity: 0.5;" disabled>
-                        ▶️ Odtwórz / Воспроизвести
+                    <button class="pronunciation-btn" onclick="playUserRecording()" id="playbackBtn" disabled>
+                        ???? Odtwórz / Воспроизвести
                     </button>
                 </div>
 
@@ -1414,33 +869,33 @@
                     <h4 id="feedbackTitle"></h4>
                     <p id="feedbackText"></p>
                     <div style="margin-top: 15px;">
-                        <strong>Ocena: <span id="pronunciationScore"></span>/5</strong>
+                        <strong>Ocena (symulacja): <span id="pronunciationScore"></span>/5</strong>
                     </div>
                 </div>
 
                 <div style="text-align: center; margin: 20px 0; display: flex; justify-content: center; gap: 15px;">
-                    <button class="btn" onclick="nextPronunciationWord()" style="width: auto; display: inline-block;">Następne<br><small>Следующее</small></button>
+                    <button class="btn" onclick="nextPronunciationWord()" id="nextPronunciationBtn" style="width: auto; display: inline-block;" disabled>Nast??pne<br><small>Следующее</small></button>
                     <button class="btn" onclick="backToMenu()" style="width: auto; display: inline-block;">Menu<br><small>Меню</small></button>
                 </div>
             </div>
         </div>
 
         <div id="flashcardActivity" class="activity-container">
-            <h2 id="flashcardHeader">🃏 Fiszki / Флешкарты</h2>
+            <h2 id="flashcardHeader">?? Fiszki / Флешкарты</h2>
             <div class="flashcard-container">
                 <div class="flashcard" id="flashcard" onclick="flipCard()">
                     <div class="flashcard-word" id="flashcardWord"></div>
                     <div class="flashcard-translation" id="flashcardTranslation" style="display: none;"></div>
                 </div>
                 <div style="text-align: center; margin: 20px 0; display: flex; justify-content: center; gap: 15px;">
-                    <button class="btn" onclick="nextCard()" style="width: auto; display: inline-block;">Następna<br><small>Следующая</small></button>
+                    <button class="btn" id="nextCardBtn" onclick="nextCard()" style="width: auto; display: inline-block;" disabled>Nast??pna<br><small>Следующая</small></button>
                     <button class="btn" onclick="backToMenu()" style="width: auto; display: inline-block;">Menu<br><small>Меню</small></button>
                 </div>
             </div>
         </div>
 
         <div id="quizActivity" class="activity-container">
-            <h2 id="quizHeader">🧠 Quiz / Викторина</h2>
+            <h2 id="quizHeader">?? Quiz / Викторина</h2>
             <div class="quiz-container">
                 <div class="quiz-question">
                     <h3 id="quizWord"></h3>
@@ -1448,41 +903,42 @@
                 </div>
                 <div class="quiz-options" id="quizOptions"></div>
                 <div style="text-align: center; margin: 20px 0; display: flex; justify-content: center; gap: 15px;">
-                    <button class="btn" onclick="nextQuiz()" id="nextQuizBtn" style="width: auto; display: inline-block; opacity: 0.5;" disabled>Następne<br><small>Следующий</small></button>
+                    <button class="btn" onclick="nextQuiz()" id="nextQuizBtn" style="width: auto; display: inline-block;" disabled>Nast??pne<br><small>Следующий</small></button>
                     <button class="btn" onclick="backToMenu()" style="width: auto; display: inline-block;">Menu<br><small>Меню</small></button>
                 </div>
             </div>
         </div>
         
         <div id="listeningActivity" class="activity-container">
-            <h2 id="listeningHeader">👂 Słuchanie / Аудирование</h2>
+            <h2 id="listeningHeader">?? S??uchanie / Аудирование</h2>
             <div style="text-align: center;">
-                <p style="margin: 20px 0; font-size: 1.2em;">Słuchaj i powtarzaj / Слушайте и повторяйте:</p>
+                <p style="margin: 20px 0; font-size: 1.2em;">S??uchaj i powtarzaj / Слушайте и повторяйте:</p>
                 <div class="flashcard" style="margin: 30px auto; cursor: default;">
                     <div class="flashcard-word" id="listeningWord"></div>
-                    <button class="btn" onclick="playWord()" style="width: auto; margin: 20px auto 0;">🔊 Odtwórz<br><small>Воспроизвести</small></button>
+                    <button class="btn" onclick="playWord()" style="width: auto; margin: 20px auto 0;">?? Odtwórz<br><small>Воспроизвести</small></button>
                 </div>
                 <div style="text-align: center; margin: 20px 0; display: flex; justify-content: center; gap: 15px;">
-                    <button class="btn" onclick="nextListeningWord()" style="width: auto; display: inline-block;">Następne<br><small>Следующее</small></button>
+                    <button class="btn" onclick="nextListeningWord()" style="width: auto; display: inline-block;">Nast??pne<br><small>Следующее</small></button>
                     <button class="btn" onclick="backToMenu()" style="width: auto; display: inline-block;">Menu<br><small>Меню</small></button>
                 </div>
             </div>
         </div>
 
         <div id="sentenceBuilderActivity" class="activity-container">
-            <h2 id="sentenceBuilderHeader">✍️ Budowa zdań / Построение предложений</h2>
+            <h2 id="sentenceBuilderHeader">???? Budowa zdań / Построение предложений</h2>
             <div class="sentence-builder-container">
                 <div class="sentence-translation">
-                    <p>Przetłumacz to zdanie / Переведите это предложение:</p>
+                    <p>Przet??umacz to zdanie / Переведите это предложение:</p>
                     <p style="font-weight: bold; margin-top: 10px; font-size: 1.5em; color: #d8b4fe;" id="sentenceRussian"></p>
                 </div>
-                <p style="color: #c7d2fe; margin-bottom: 20px;">Twoja odpowiedź (przeciągnij lub kliknij słowa) / Ваш ответ (перетащите или нажмите на слова):</p>
+                <p style="color: #c7d2fe; margin-bottom: 20px;">Twoja odpowied?? (przeci??gnij lub kliknij s??owa) / Ваш ответ (перетащите или нажмите на слова):</p>
                 <div class="sentence-drop-area" id="sentenceDropArea"></div>
-                <p style="color: #c7d2fe; margin-top: 30px; margin-bottom: 10px;">Bank słów / Банк слов:</p>
+                 <div id="sentenceFeedback" style="display: none;"></div>
+                <p style="color: #c7d2fe; margin-top: 30px; margin-bottom: 10px;">Bank s??ów / Банк слов:</p>
                 <div class="word-bank" id="wordBank"></div>
                 <div style="text-align: center; margin: 30px 0; display: flex; justify-content: center; gap: 15px;">
-                    <button class="btn" onclick="checkSentence()" id="checkSentenceBtn" style="width: auto; display: inline-block;">Sprawdź<br><small>Проверить</small></button>
-                    <button class="btn" onclick="nextSentence()" id="nextSentenceBtn" style="width: auto; display: inline-block; opacity: 0.5;" disabled>Następne<br><small>Следующее</small></button>
+                    <button class="btn" onclick="checkSentence()" id="checkSentenceBtn" style="width: auto; display: inline-block;">Sprawd??<br><small>Проверить</small></button>
+                    <button class="btn" onclick="nextSentence()" id="nextSentenceBtn" style="width: auto; display: inline-block;" disabled>Nast??pne<br><small>Следующее</small></button>
                     <button class="btn" onclick="backToMenu()" style="width: auto; display: inline-block;">Menu<br><small>Меню</small></button>
                 </div>
             </div>
@@ -1494,165 +950,116 @@
         const learningData = {
             A1: {
                 vocabulary: [
-                    { polish: 'tak', russian: 'да' },
-                    { polish: 'nie', russian: 'нет' },
-                    { polish: 'proszę', russian: 'пожалуйста' },
-                    { polish: 'dziękuję', russian: 'спасибо' },
-                    { polish: 'dom', russian: 'дом' },
-                    { polish: 'kot', russian: 'кот' },
-                    { polish: 'pies', russian: 'собака' },
-                    { polish: 'woda', russian: 'вода' },
-                    { polish: 'chleb', russian: 'хлеб' },
-                    { polish: 'kobieta', russian: 'женщина' },
-                    { polish: 'mężczyzna', russian: 'мужчина' },
-                    { polish: 'iść', russian: 'идти' },
-                    { polish: 'mieć', russian: 'иметь' },
-                    { polish: 'być', russian: 'быть' },
+                    { polish: 'tak', russian: 'да' }, { polish: 'nie', russian: 'нет' }, { polish: 'prosz??', russian: 'пожалуйста' }, { polish: 'dzi??kuj??', russian: 'спасибо' }, { polish: 'dom', russian: 'дом' }, { polish: 'kot', russian: 'кот' }, { polish: 'pies', russian: 'собака' }, { polish: 'woda', russian: 'вода' }, { polish: 'chleb', russian: 'хлеб' }, { polish: 'kobieta', russian: 'женщина' }, { polish: 'm????czyzna', russian: 'мужчина' }, { polish: 'i????', russian: 'идти' }, { polish: 'mie??', russian: 'иметь' }, { polish: 'by??', russian: 'быть' },
                 ],
                 sentences: [
-                    { polish: "To jest dom", russian: "Это дом", words: ["To", "jest", "dom"] },
-                    { polish: "Kot pije mleko", russian: "Кот пьет молоко", words: ["Kot", "pije", "mleko"] },
-                    { polish: "To jest kobieta", russian: "Это женщина", words: ["To", "jest", "kobieta"] },
-                    { polish: "Mam pytanie", russian: "У меня есть вопрос", words: ["Mam", "pytanie"] },
+                    { polish: "To jest dom", russian: "Это дом", words: ["To", "jest", "dom"] }, { polish: "Kot pije mleko", russian: "Кот пьет молоко", words: ["Kot", "pije", "mleko"] }, { polish: "To jest kobieta", russian: "Это женщина", words: ["To", "jest", "kobieta"] }, { polish: "Mam pytanie", russian: "У меня есть вопрос", words: ["Mam", "pytanie"] },
                 ]
             },
             A2: {
                 vocabulary: [
-                    { polish: 'sklep', russian: 'магазин' },
-                    { polish: 'restauracja', russian: 'ресторан' },
-                    { polish: 'bilet', russian: 'билет' },
-                    { polish: 'dworzec', russian: 'вокзал' },
-                    { polish: 'lotnisko', russian: 'аэропорт' },
-                    { polish: 'lekarz', russian: 'врач' },
-                    { polish: 'pogoda', russian: 'погода' },
-                    { polish: 'wczoraj', russian: 'вчера' },
-                    { polish: 'jutro', russian: 'завтра' },
-                    { polish: 'rozmawiać', russian: 'разговаривать' },
-                    { polish: 'podróżować', russian: 'путешествовать' },
-                    { polish: 'zamówić', russian: 'заказать' },
+                    { polish: 'sklep', russian: 'магазин' }, { polish: 'restauracja', russian: 'ресторан' }, { polish: 'bilet', russian: 'билет' }, { polish: 'dworzec', russian: 'вокзал' }, { polish: 'lotnisko', russian: 'аэропорт' }, { polish: 'lekarz', russian: 'врач' }, { polish: 'pogoda', russian: 'погода' }, { polish: 'wczoraj', russian: 'вчера' }, { polish: 'jutro', russian: 'завтра' }, { polish: 'rozmawia??', russian: 'разговаривать' }, { polish: 'podró??owa??', russian: 'путешествовать' }, { polish: 'zamówi??', russian: 'заказать' },
                 ],
                 sentences: [
-                    { polish: "Chciałbym zamówić kawę", russian: "Я хотел бы заказать кофе", words: ["Chciałbym", "zamówić", "kawę"] },
-                    { polish: "Gdzie jest najbliższy sklep?", russian: "Где ближайший магазин?", words: ["Gdzie", "jest", "najbliższy", "sklep?"] },
-                    { polish: "Jaka jest dziś pogoda?", russian: "Какая сегодня погода?", words: ["Jaka", "jest", "dziś", "pogoda?"] },
-                    { polish: "Muszę iść do lekarza", russian: "Мне нужно идти к врачу", words: ["Muszę", "iść", "do", "lekarza"] },
+                    { polish: "Chcia??bym zamówi?? kaw??", russian: "Я хотел бы заказать кофе", words: ["Chcia??bym", "zamówi??", "kaw??"] }, { polish: "Gdzie jest najbli??szy sklep?", russian: "Где ближайший магазин?", words: ["Gdzie", "jest", "najbli??szy", "sklep?"] }, { polish: "Jaka jest dzi?? pogoda?", russian: "Какая сегодня погода?", words: ["Jaka", "jest", "dzi??", "pogoda?"] }, { polish: "Musz?? i???? do lekarza", russian: "Мне нужно идти к врачу", words: ["Musz??", "i????", "do", "lekarza"] },
                 ]
             },
             B1: {
                 vocabulary: [
-                    { polish: 'zdanie', russian: 'мнение' },
-                    { polish: 'możliwość', russian: 'возможность' },
-                    { polish: 'problem', russian: 'проблема' },
-                    { polish: 'rozwiązanie', russian: 'решение' },
-                    { polish: 'wykształcenie', russian: 'образование' },
-                    { polish: 'praca', russian: 'работа' },
-                    { polish: 'zainteresowania', russian: 'увлечения' },
-                    { polish: 'osiągnąć', russian: 'достичь' },
-                    { polish: 'wyjaśnić', russian: 'объяснить' },
-                    { polish: 'porównać', russian: 'сравнить' },
-                    { polish: 'przyszłość', russian: 'будущее' },
+                    { polish: 'zdanie', russian: 'мнение' }, { polish: 'mo??liwo????', russian: 'возможность' }, { polish: 'problem', russian: 'проблема' }, { polish: 'rozwi??zanie', russian: 'решение' }, { polish: 'wykszta??cenie', russian: 'образование' }, { polish: 'praca', russian: 'работа' }, { polish: 'zainteresowania', russian: 'увлечения' }, { polish: 'osi??gn????', russian: 'достичь' }, { polish: 'wyja??ni??', russian: 'объяснить' }, { polish: 'porówna??', russian: 'сравнить' }, { polish: 'przysz??o????', russian: 'будущее' },
                 ],
                 sentences: [
-                    { polish: "Moim zdaniem to dobry pomysł", russian: "По моему мнению, это хорошая идея", words: ["Moim", "zdaniem", "to", "dobry", "pomysł"] },
-                    { polish: "Musimy znaleźć rozwiązanie tego problemu", russian: "Мы должны найти решение этой проблемы", words: ["Musimy", "znaleźć", "rozwiązanie", "tego", "problemu"] },
-                    { polish: "Jakie masz plany na przyszłość?", russian: "Какие у тебя планы на будущее?", words: ["Jakie", "masz", "plany", "na", "przyszłość?"] },
-                    { polish: "Potrafię płynnie mówić po angielsku", russian: "Я могу свободно говорить по-английски", words: ["Potrafię", "płynnie", "mówić", "po", "angielsku"] },
+                    { polish: "Moim zdaniem to dobry pomys??", russian: "По моему мнению, это хорошая идея", words: ["Moim", "zdaniem", "to", "dobry", "pomys??"] }, { polish: "Musimy znale???? rozwi??zanie tego problemu", russian: "Мы должны найти решение этой проблемы", words: ["Musimy", "znale????", "rozwi??zanie", "tego", "problemu"] }, { polish: "Jakie masz plany na przysz??o?????", russian: "Какие у тебя планы на будущее?", words: ["Jakie", "masz", "plany", "na", "przysz??o?????"] }, { polish: "Potrafi?? p??ynnie mówi?? po angielsku", russian: "Я могу свободно говорить по-английски", words: ["Potrafi??", "p??ynnie", "mówi??", "po", "angielsku"] },
                 ]
             },
             B2: {
                 vocabulary: [
-                    { polish: 'świadomość', russian: 'осознание' },
-                    { polish: 'społeczeństwo', russian: 'общество' },
-                    { polish: 'gospodarka', russian: 'экономика' },
-                    { polish: 'środowisko', russian: 'окружающая среда' },
-                    { polish: 'wpływ', russian: 'влияние' },
-                    { polish: 'analizować', russian: 'анализировать' },
-                    { polish: 'krytykować', russian: 'критиковать' },
-                    { polish: 'argument', russian: 'аргумент' },
-                    { polish: 'zaawansowany', russian: 'продвинутый' },
-                    { polish: 'skuteczny', russian: 'эффективный' },
+                    { polish: '??wiadomo????', russian: 'осознание' }, { polish: 'spo??eczeństwo', russian: 'общество' }, { polish: 'gospodarka', russian: 'экономика' }, { polish: '??rodowisko', russian: 'окружающая среда' }, { polish: 'wp??yw', russian: 'влияние' }, { polish: 'analizowa??', russian: 'анализировать' }, { polish: 'krytykowa??', russian: 'критиковать' }, { polish: 'argument', russian: 'аргумент' }, { polish: 'zaawansowany', russian: 'продвинутый' }, { polish: 'skuteczny', russian: 'эффективный' },
                 ],
                 sentences: [
-                    { polish: "Należy analizować wpływ technologii na społeczeństwo", russian: "Следует анализировать влияние технологий на общество", words: ["Należy", "analizować", "wpływ", "technologii", "na", "społeczeństwo"] },
-                    { polish: "Ochrona środowiska jest kluczowym wyzwaniem", russian: "Защита окружающей среды является ключевым вызовом", words: ["Ochrona", "środowiska", "jest", "kluczowym", "wyzwaniem"] },
-                    { polish: "Twoje argumenty są bardzo przekonujące", russian: "Твои аргументы очень убедительны", words: ["Twoje", "argumenty", "są", "bardzo", "przekonujące"] },
+                    { polish: "Nale??y analizowa?? wp??yw technologii na spo??eczeństwo", russian: "Следует анализировать влияние технологий на общество", words: ["Nale??y", "analizowa??", "wp??yw", "technologii", "na", "spo??eczeństwo"] }, { polish: "Ochrona ??rodowiska jest kluczowym wyzwaniem", russian: "Защита окружающей среды является ключевым вызовом", words: ["Ochrona", "??rodowiska", "jest", "kluczowym", "wyzwaniem"] }, { polish: "Twoje argumenty s?? bardzo przekonuj??ce", russian: "Твои аргументы очень убедительны", words: ["Twoje", "argumenty", "s??", "bardzo", "przekonuj??ce"] },
                 ]
             },
             C1: {
                 vocabulary: [
-                    { polish: 'subtelny', russian: 'тонкий, деликатный' },
-                    { polish: 'jednoznaczny', russian: 'однозначный' },
-                    { polish: 'wszechstronny', russian: 'всесторонний' },
-                    { polish: 'konsekwencja', russian: 'последствие' },
-                    { polish: 'interpretować', russian: 'интерпретировать' },
-                    { polish: 'kwestionować', russian: 'ставить под сомнение' },
-                    { polish: 'hipoteza', russian: 'гипотеза' },
-                    { polish: 'paradygmat', russian: 'парадигма' },
-                    { polish: 'retoryka', russian: 'риторика' },
-                    { polish: 'syntéza', russian: 'синтез' },
+                    { polish: 'subtelny', russian: 'тонкий, деликатный' }, { polish: 'jednoznaczny', russian: 'однозначный' }, { polish: 'wszechstronny', russian: 'всесторонний' }, { polish: 'konsekwencja', russian: 'последствие' }, { polish: 'interpretowa??', russian: 'интерпретировать' }, { polish: 'kwestionowa??', russian: 'ставить под сомнение' }, { polish: 'hipoteza', russian: 'гипотеза' }, { polish: 'paradygmat', russian: 'парадигма' }, { polish: 'retoryka', russian: 'риторика' }, { polish: 'syntéza', russian: 'синтез' },
                 ],
                 sentences: [
-                    { polish: "Jego retoryka była subtelna, ale skuteczna", russian: "Его риторика была тонкой, но эффективной", words: ["Jego", "retoryka", "była", "subtelna", "ale", "skuteczna"] },
-                    { polish: "Należy wszechstronnie zbadać konsekwencje tej decyzji", russian: "Следует всесторонне изучить последствия этого решения", words: ["Należy", "wszechstronnie", "zbadać", "konsekwencje", "tej", "decyzji"] },
-                    { polish: "Ta hipoteza wymaga dalszych badań empirycznych", russian: "Эта гипотеза требует дальнейших эмпирических исследований", words: ["Ta", "hipoteza", "wymaga", "dalszych", "badań", "empirycznych"] },
+                    { polish: "Jego retoryka by??a subtelna, ale skuteczna", russian: "Его риторика была тонкой, но эффективной", words: ["Jego", "retoryka", "by??a", "subtelna", "ale", "skuteczna"] }, { polish: "Nale??y wszechstronnie zbada?? konsekwencje tej decyzji", russian: "Следует всесторонне изучить последствия этого решения", words: ["Nale??y", "wszechstronnie", "zbada??", "konsekwencje", "tej", "decyzji"] }, { polish: "Ta hipoteza wymaga dalszych badań empirycznych", russian: "Эта гипотеза требует дальнейших эмпирических исследований", words: ["Ta", "hipoteza", "wymaga", "dalszych", "badań", "empirycznych"] },
                 ]
             },
             C2: {
                 vocabulary: [
-                    { polish: 'ambiwalentny', russian: 'амбивалентный' },
-                    { polish: 'dywagacja', russian: 'отвлеченное рассуждение' },
-                    { polish: 'efemeryczny', russian: 'эфемерный' },
-                    { polish: 'kognitywistyka', russian: 'когнитивистика' },
-                    { polish: 'prekursor', russian: 'предшественник' },
-                    { polish: 'par excellence', russian: 'в высшей степени' },
-                    { polish: 'erudycja', russian: 'эрудиция' },
-                    { polish: 'solipsyzm', russian: 'солипсизм' },
-                    { polish: 'onomatopeja', russian: 'ономатопея' },
+                    { polish: 'ambiwalentny', russian: 'амбивалентный' }, { polish: 'dywagacja', russian: 'отвлеченное рассуждение' }, { polish: 'efemeryczny', russian: 'эфемерный' }, { polish: 'kognitywistyka', russian: 'когнитивистика' }, { polish: 'prekursor', russian: 'предшественник' }, { polish: 'par excellence', russian: 'в высшей степени' }, { polish: 'erudycja', russian: 'эрудиция' }, { polish: 'solipsyzm', russian: 'солипсизм' }, { polish: 'onomatopeja', russian: 'ономатопея' },
                 ],
                 sentences: [
-                    { polish: "Jego erudycyjne dywagacje były fascynujące dla słuchaczy", russian: "Его эрудированные отвлеченные рассуждения были увлекательны для слушателей", words: ["Jego", "erudycyjne", "dywagacje", "były", "fascynujące", "dla", "słuchaczy"] },
-                    { polish: "Jego stosunek do tej kwestii był wysoce ambiwalentny", russian: "Его отношение к этому вопросу было весьма амбивалентным", words: ["Jego", "stosunek", "do", "tej", "kwestii", "był", "wysoce", "ambiwalentny"] },
-                    { polish: "Był to artysta par excellence, prawdziwy prekursor swojego nurtu", russian: "Это был художник в высшей степени, настоящий предшественник своего течения", words: ["Był", "to", "artysta", "par excellence", "prawdziwy", "prekursor", "swojego", "nurtu"] },
+                    { polish: "Jego erudycyjne dywagacje by??y fascynuj??ce dla s??uchaczy", russian: "Его эрудированные отвлеченные рассуждения были увлекательны для слушателей", words: ["Jego", "erudycyjne", "dywagacje", "by??y", "fascynuj??ce", "dla", "s??uchaczy"] }, { polish: "Jego stosunek do tej kwestii by?? wysoce ambiwalentny", russian: "Его отношение к этому вопросу было весьма амбивалентным", words: ["Jego", "stosunek", "do", "tej", "kwestii", "by??", "wysoce", "ambiwalentny"] }, { polish: "By?? to artysta par excellence, prawdziwy prekursor swojego nurtu", russian: "Это был художник в высшей степени, настоящий предшественник своего течения", words: ["By??", "to", "artysta", "par excellence", "prawdziwy", "prekursor", "swojego", "nurtu"] },
                 ]
             }
         };
 
-        // Global variables for current state
+        // Global variables
         let currentLevel = 'A1';
         let vocabulary = [];
         let sentenceData = [];
-
         let currentCardIndex = 0;
         let currentQuizIndex = 0;
         let currentSentenceIndex = 0;
         let quizAnswered = false;
         let sentenceChecked = false;
+        let cardFlipped = false;
 
         // Pronunciation variables
-        let mediaRecorder = null;
+        let mediaRecorder;
         let audioChunks = [];
-        let userRecordingBlob = null;
+        let userRecordingBlob;
         let isRecording = false;
-
+        let stream;
+        
+        // Default stats object
         let stats = {
             wordsLearned: 0,
             sentencesCompleted: 0,
             exercisesCompleted: 0,
             streak: 1,
-            accuracy: 0,
             correctAnswers: 0,
             totalAnswers: 0
         };
-        
+
+        // --- PROGRESS SAVING/LOADING ---
+        function saveProgress() {
+            try {
+                localStorage.setItem('polishAppStats', JSON.stringify(stats));
+                localStorage.setItem('polishAppLevel', currentLevel);
+            } catch (e) {
+                console.error("Could not save progress to localStorage:", e);
+            }
+        }
+
+        function loadProgress() {
+            try {
+                const savedStats = localStorage.getItem('polishAppStats');
+                const savedLevel = localStorage.getItem('polishAppLevel');
+                
+                if (savedStats) {
+                    stats = JSON.parse(savedStats);
+                }
+                
+                setLevel(savedLevel || 'A1');
+
+            } catch (e) {
+                console.error("Could not load progress from localStorage:", e);
+                setLevel('A1'); // fallback to default
+            }
+            updateStats();
+        }
+
         // --- LEVEL MANAGEMENT ---
         function setLevel(level) {
             currentLevel = level;
-            
-            // Load data for the selected level
             vocabulary = learningData[level].vocabulary;
             sentenceData = learningData[level].sentences;
             
-            // Update active button style
             document.querySelectorAll('.level-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.textContent === level) {
@@ -1660,19 +1067,13 @@
                 }
             });
             
-            // Save level to local storage (but won't persist in Claude artifacts)
-            try {
-                localStorage.setItem('polishAppLevel', level);
-            } catch(e) {
-                console.log('LocalStorage not available');
-            }
-            
-            // Reset indices and go to menu
             currentCardIndex = 0;
             currentQuizIndex = 0;
             currentSentenceIndex = 0;
+            
+            console.log(`Level changed to ${level}. Loaded ${vocabulary.length} words and ${sentenceData.length} sentences.`);
+            saveProgress(); // Save new level choice
             backToMenu();
-            console.log(`Poziom zmieniony na ${level}. Załadowano ${vocabulary.length} słów i ${sentenceData.length} zdań.`);
         }
 
         // --- STATS MANAGEMENT ---
@@ -1682,105 +1083,83 @@
             document.getElementById('exercisesCompleted').textContent = stats.exercisesCompleted;
             document.getElementById('streak').textContent = stats.streak;
             const accuracyValue = stats.totalAnswers > 0 ? Math.round((stats.correctAnswers / stats.totalAnswers) * 100) : 0;
-            stats.accuracy = accuracyValue;
             document.getElementById('accuracy').textContent = accuracyValue + '%';
 
             const progress = Math.min((stats.wordsLearned / 50) * 100, 100);
             document.getElementById('dailyProgress').style.width = progress + '%';
             document.getElementById('progressText').textContent =
-                `Cel dnia: 50 słów / Цель дня: 50 слов (${stats.wordsLearned}/50)`;
+                `Cel dnia: 50 s??ów / Цель дня: 50 слов (${stats.wordsLearned}/50)`;
+            
+            saveProgress();
         }
-        
+
         function updateActivityHeader(elementId, baseText) {
              document.getElementById(elementId).innerHTML = `${baseText} <span style="font-size: 0.7em; color: #a855f7;">(${currentLevel})</span>`;
         }
 
         // --- ACTIVITY NAVIGATION ---
-        function startGrammar() {
-            hideAllActivities();
-            updateActivityHeader('grammarHeader', '📝 Gramatyka / Грамматика');
-            document.getElementById('grammarActivity').style.display = 'block';
-            document.getElementById('mainMenu').style.display = 'none';
-        }
-
-        function startPronunciation() {
-            if (vocabulary.length === 0) {
-                alert('Brak słów dla tego poziomu. / Нет слов для этого уровня.');
-                return;
-            }
-            hideAllActivities();
-            updateActivityHeader('pronunciationHeader', '🎤 Wymowa / Произношение');
-            document.getElementById('pronunciationActivity').style.display = 'block';
-            document.getElementById('mainMenu').style.display = 'none';
-            currentCardIndex = 0;
-            showPronunciationWord();
-        }
-
-        function startFlashcards() {
-            if (vocabulary.length === 0) {
-                alert('Brak słów dla tego poziomu. Wybierz inny poziom. / Нет слов для этого уровня. Выберите другой уровень.');
-                return;
-            }
-            hideAllActivities();
-            updateActivityHeader('flashcardHeader', '🃏 Fiszki / Флешкарты');
-            document.getElementById('flashcardActivity').style.display = 'block';
-            document.getElementById('mainMenu').style.display = 'none';
-            currentCardIndex = 0;
-            showCard();
-        }
-
-        function startQuiz() {
-             if (vocabulary.length < 4) {
-                alert('Zbyt mało słów dla tego poziomu, aby utworzyć quiz. / Слишком мало слов для этого уровня, чтобы создать викторину.');
-                return;
-            }
-            hideAllActivities();
-            updateActivityHeader('quizHeader', '🧠 Quiz / Викторина');
-            document.getElementById('quizActivity').style.display = 'block';
-            document.getElementById('mainMenu').style.display = 'none';
-            currentQuizIndex = 0;
-            showQuiz();
-        }
-
-        function startListening() {
-            if (vocabulary.length === 0) {
-                alert('Brak słów dla tego poziomu. / Нет слов для этого уровня.');
-                return;
-            }
-            hideAllActivities();
-            updateActivityHeader('listeningHeader', '👂 Słuchanie / Аудирование');
-            document.getElementById('listeningActivity').style.display = 'block';
-            document.getElementById('mainMenu').style.display = 'none';
-            currentCardIndex = 0;
-            showListeningWord();
-        }
-        
-        function startSentenceBuilder() {
-            if (sentenceData.length === 0) {
-                alert('Brak zdań dla tego poziomu. / Нет предложений для этого уровня.');
-                return;
-            }
-            hideAllActivities();
-            updateActivityHeader('sentenceBuilderHeader', '✍️ Budowa zdań / Построение предложений');
-            document.getElementById('sentenceBuilderActivity').style.display = 'block';
-            document.getElementById('mainMenu').style.display = 'none';
-            currentSentenceIndex = 0;
-            loadSentence();
-        }
-
         function hideAllActivities() {
             document.querySelectorAll('.activity-container').forEach(el => el.style.display = 'none');
+        }
+
+        function showActivity(activityId) {
+             hideAllActivities();
+             document.getElementById(activityId).style.display = 'block';
+             document.getElementById('mainMenu').style.display = 'none';
         }
 
         function backToMenu() {
             hideAllActivities();
             document.getElementById('mainMenu').style.display = 'grid';
-            
-            // Reset pronunciation state
             if (isRecording) {
                 stopRecording();
             }
-            resetPronunciationFeedback();
+        }
+
+        // --- ACTIVITY START FUNCTIONS ---
+        function startGrammar() {
+            showActivity('grammarActivity');
+            updateActivityHeader('grammarHeader', '?? Gramatyka / Грамматика');
+        }
+
+        function startPronunciation() {
+            if (vocabulary.length === 0) return alert('Brak s??ów dla tego poziomu.');
+            showActivity('pronunciationActivity');
+            updateActivityHeader('pronunciationHeader', '?? Wymowa / Произношение');
+            currentCardIndex = 0;
+            showPronunciationWord();
+        }
+
+        function startFlashcards() {
+            if (vocabulary.length === 0) return alert('Brak s??ów dla tego poziomu.');
+            showActivity('flashcardActivity');
+            updateActivityHeader('flashcardHeader', '?? Fiszki / Флешкарты');
+            currentCardIndex = 0;
+            showCard();
+        }
+
+        function startQuiz() {
+            if (vocabulary.length < 4) return alert('Zbyt ma??o s??ów, aby utworzy?? quiz.');
+            showActivity('quizActivity');
+            updateActivityHeader('quizHeader', '?? Quiz / Викторина');
+            currentQuizIndex = 0;
+            showQuiz();
+        }
+        
+        function startListening() {
+            if (vocabulary.length === 0) return alert('Brak s??ów dla tego poziomu.');
+            showActivity('listeningActivity');
+            updateActivityHeader('listeningHeader', '?? S??uchanie / Аудирование');
+            currentCardIndex = 0;
+            showListeningWord();
+        }
+
+        function startSentenceBuilder() {
+            if (sentenceData.length === 0) return alert('Brak zdań dla tego poziomu.');
+            showActivity('sentenceBuilderActivity');
+            updateActivityHeader('sentenceBuilderHeader', '???? Budowa zdań / Построение предложений');
+            currentSentenceIndex = 0;
+            loadSentence();
         }
 
         // --- PRONUNCIATION FUNCTIONS ---
@@ -1789,87 +1168,73 @@
             document.getElementById('pronunciationWord').textContent = word.polish;
             document.getElementById('pronunciationTranslation').textContent = word.russian;
             resetPronunciationFeedback();
+            document.getElementById('nextPronunciationBtn').disabled = true; // Disable next button
         }
-
-        function playNativeAudio() {
-            const word = vocabulary[currentCardIndex].polish;
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(word);
-                utterance.lang = 'pl-PL';
-                utterance.rate = 0.7;
-                utterance.pitch = 1.0;
-                speechSynthesis.speak(utterance);
+        
+        function toggleRecording() {
+            if (isRecording) {
+                stopRecording();
             } else {
-                alert('Twoja przeglądarka nie obsługuje syntezy mowy / Ваш браузер не поддерживает синтез речи');
+                startRecording();
             }
         }
 
         async function startRecording() {
-            if (isRecording) {
-                stopRecording();
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                alert('API микрофона не поддерживается в вашем браузере.');
                 return;
             }
-
             try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                mediaRecorder = new MediaRecorder(stream);
-                audioChunks = [];
+                stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 isRecording = true;
+                updateRecordButtonUI();
 
-                const recordBtn = document.getElementById('recordBtn');
-                const micIndicator = document.getElementById('micIndicator');
+                audioChunks = [];
+                mediaRecorder = new MediaRecorder(stream);
                 
-                recordBtn.innerHTML = '<div class="mic-indicator active"></div>🛑 Stop / Стоп';
-                micIndicator.classList.add('active');
-
                 mediaRecorder.ondataavailable = event => {
                     audioChunks.push(event.data);
                 };
 
                 mediaRecorder.onstop = () => {
                     userRecordingBlob = new Blob(audioChunks, { type: 'audio/wav' });
-                    
-                    const playbackBtn = document.getElementById('playbackBtn');
-                    playbackBtn.disabled = false;
-                    playbackBtn.style.opacity = '1';
-                    
-                    // Simulate pronunciation analysis
+                    document.getElementById('playbackBtn').disabled = false;
                     analyzePronunciation();
+                    // Stop all media tracks to release the microphone
+                    stream.getTracks().forEach(track => track.stop());
                 };
 
                 mediaRecorder.start();
                 
-                // Auto-stop after 3 seconds
-                setTimeout(() => {
-                    if (isRecording) {
-                        stopRecording();
-                    }
-                }, 3000);
-
             } catch (error) {
                 console.error('Error accessing microphone:', error);
-                alert('Nie można uzyskać dostępu do mikrofonu / Не удается получить доступ к микрофону');
+                alert('Не удалось получить доступ к микрофону. Проверьте разрешения в настройках браузера.');
+                isRecording = false;
+                updateRecordButtonUI();
             }
         }
 
         function stopRecording() {
-            if (mediaRecorder && isRecording) {
-                mediaRecorder.stop();
-                
-                // Останавливаем все треки медиапотока
-                if (mediaRecorder.stream) {
-                    mediaRecorder.stream.getTracks().forEach(track => track.stop());
-                }
-                
-                // Сбрасываем состояние
-                isRecording = false;
-                mediaRecorder = null; // Очищаем ссылку на mediaRecorder
-
-                const recordBtn = document.getElementById('recordBtn');
-                const micIndicator = document.getElementById('micIndicator');
-                
-                recordBtn.innerHTML = '<div class="mic-indicator"></div>🎤 Nagraj / Записать';
+            if (mediaRecorder && mediaRecorder.state === "recording") {
+                 mediaRecorder.stop();
+            }
+            isRecording = false;
+            updateRecordButtonUI();
+        }
+        
+        function updateRecordButtonUI() {
+            const recordBtn = document.getElementById('recordBtn');
+            const recordBtnText = document.getElementById('recordBtnText');
+            const micIndicator = document.getElementById('micIndicator');
+            
+            if (isRecording) {
+                recordBtnText.textContent = '?? Stop / Стоп';
+                micIndicator.classList.add('active');
+                recordBtn.classList.add('recording');
+            } else {
+                recordBtnText.textContent = '?? Nagraj / Записать';
                 micIndicator.classList.remove('active');
+                recordBtn.classList.remove('recording');
             }
         }
 
@@ -1879,11 +1244,10 @@
                 audio.play();
             }
         }
-
+        
         function analyzePronunciation() {
-            // Simulate pronunciation analysis with random scoring
-            const scores = [2, 3, 4, 5]; // Possible scores
-            const score = scores[Math.floor(Math.random() * scores.length)];
+            // NOTE: This is a SIMULATION. Real pronunciation analysis requires a server-side API.
+            const score = Math.floor(Math.random() * 4) + 2; // Random score from 2 to 5
             
             const feedbackDiv = document.getElementById('pronunciationFeedback');
             const feedbackTitle = document.getElementById('feedbackTitle');
@@ -1891,27 +1255,18 @@
             const scoreElement = document.getElementById('pronunciationScore');
             
             let feedbackClass, title, text;
-            
-            switch(score) {
-                case 5:
-                    feedbackClass = 'excellent';
-                    title = 'Doskonale! / Отлично!';
-                    text = 'Twoja wymowa brzmi bardzo naturalnie. Świetna robota! / Ваше произношение звучит очень естественно. Отличная работа!';
-                    break;
-                case 4:
-                    feedbackClass = 'excellent';
-                    title = 'Bardzo dobrze! / Очень хорошо!';
-                    text = 'Prawie idealna wymowa. Kontynuuj ćwiczenia! / Почти идеальное произношение. Продолжайте упражнения!';
-                    break;
-                case 3:
-                    feedbackClass = 'good';
-                    title = 'Dobrze! / Хорошо!';
-                    text = 'Dobra wymowa, ale jest miejsce na poprawę. Spróbuj jeszcze raz. / Хорошее произношение, но есть место для улучшения. Попробуйте еще раз.';
-                    break;
-                default:
-                    feedbackClass = 'needs-practice';
-                    title = 'Potrzebujesz więcej ćwiczeń / Нужно больше практики';
-                    text = 'Posłuchaj jeszcze raz nagrania wzorcowego i spróbuj ponownie. / Послушайте еще раз эталонную запись и попробуйте снова.';
+            if(score >= 4) {
+                 feedbackClass = 'excellent';
+                 title = 'Dobrze! / Хорошо!';
+                 text = 'Dobra robota! Mo??esz przej???? dalej. / Хорошая работа! Можете идти дальше.';
+            } else if (score === 3) {
+                feedbackClass = 'good';
+                title = 'Nie??le / Неплохо';
+                text = 'Dobra próba, ale jest miejsce na popraw??. / Хорошая попытка, но есть куда стремиться.';
+            } else {
+                feedbackClass = 'needs-practice';
+                title = 'Potrzebujesz wi??cej ??wiczeń / Нужно больше практики';
+                text = 'Pos??uchaj wzorcowego nagrania i spróbuj ponownie. / Послушайте эталонную запись и попробуйте снова.';
             }
             
             feedbackDiv.className = `score-feedback ${feedbackClass}`;
@@ -1920,7 +1275,6 @@
             scoreElement.textContent = score;
             feedbackDiv.style.display = 'block';
             
-            // Update stats
             stats.totalAnswers++;
             if (score >= 4) {
                 stats.correctAnswers++;
@@ -1928,18 +1282,16 @@
             }
             stats.exercisesCompleted++;
             updateStats();
+            
+            // Enable the "Next" button after an attempt
+            document.getElementById('nextPronunciationBtn').disabled = false;
         }
+
 
         function resetPronunciationFeedback() {
             document.getElementById('pronunciationFeedback').style.display = 'none';
             document.getElementById('playbackBtn').disabled = true;
-            document.getElementById('playbackBtn').style.opacity = '0.5';
             userRecordingBlob = null;
-            
-            // Также сбрасываем состояние записи при сбросе feedback
-            if (isRecording) {
-                stopRecording();
-            }
         }
 
         function nextPronunciationWord() {
@@ -1947,17 +1299,35 @@
             showPronunciationWord();
         }
 
+        function playNativeAudio() {
+            const word = vocabulary[currentCardIndex].polish;
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'pl-PL';
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            } else {
+                alert('Ваш браузер не поддерживает синтез речи.');
+            }
+        }
+
         // --- FLASHCARD FUNCTIONS ---
         function showCard() {
+            cardFlipped = false;
             const card = vocabulary[currentCardIndex];
             document.getElementById('flashcardWord').textContent = card.polish;
             document.getElementById('flashcardTranslation').textContent = card.russian;
             document.getElementById('flashcardTranslation').style.display = 'none';
+            document.getElementById('nextCardBtn').disabled = true; // Disable until flipped
         }
 
         function flipCard() {
             const translation = document.getElementById('flashcardTranslation');
             translation.style.display = translation.style.display === 'none' ? 'block' : 'none';
+            if (!cardFlipped) {
+                cardFlipped = true;
+                document.getElementById('nextCardBtn').disabled = false; // Enable next button
+            }
         }
 
         function nextCard() {
@@ -1977,14 +1347,9 @@
             const options = [word.russian];
             while (options.length < 4) {
                 const randomWord = vocabulary[Math.floor(Math.random() * vocabulary.length)].russian;
-                if (!options.includes(randomWord)) {
-                    options.push(randomWord);
-                }
+                if (!options.includes(randomWord)) options.push(randomWord);
             }
-            for (let i = options.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [options[i], options[j]] = [options[j], options[i]];
-            }
+            options.sort(() => Math.random() - 0.5);
 
             const optionsContainer = document.getElementById('quizOptions');
             optionsContainer.innerHTML = '';
@@ -1996,9 +1361,7 @@
                 optionsContainer.appendChild(div);
             });
             
-            const nextBtn = document.getElementById('nextQuizBtn');
-            nextBtn.disabled = true;
-            nextBtn.style.opacity = '0.5';
+            document.getElementById('nextQuizBtn').disabled = true;
         }
 
         function selectAnswer(element, isCorrect) {
@@ -2006,6 +1369,7 @@
             quizAnswered = true;
             stats.totalAnswers++;
             const correctRussianWord = vocabulary[currentQuizIndex].russian;
+
             document.querySelectorAll('.quiz-option').forEach(option => {
                 option.style.pointerEvents = 'none';
                 if (option.textContent === correctRussianWord) option.classList.add('correct');
@@ -2019,7 +1383,6 @@
             }
             updateStats();
             document.getElementById('nextQuizBtn').disabled = false;
-            document.getElementById('nextQuizBtn').style.opacity = '1';
         }
 
         function nextQuiz() {
@@ -2029,7 +1392,7 @@
             updateStats();
             showQuiz();
         }
-
+        
         // --- LISTENING FUNCTIONS ---
         function showListeningWord() {
             document.getElementById('listeningWord').textContent = vocabulary[currentCardIndex].polish;
@@ -2043,7 +1406,7 @@
                 utterance.rate = 0.8;
                 speechSynthesis.speak(utterance);
             } else {
-                alert('Twoja przeglądarka nie obsługuje syntezy mowy / Ваш браузер не поддерживает синтез речи');
+                alert('Ваш браузер не поддерживает синтез речи');
             }
         }
 
@@ -2053,7 +1416,7 @@
             stats.exercisesCompleted++;
             updateStats();
         }
-
+        
         // --- SENTENCE BUILDER FUNCTIONS ---
         function loadSentence() {
             sentenceChecked = false;
@@ -2062,71 +1425,47 @@
             
             const dropArea = document.getElementById('sentenceDropArea');
             const wordBank = document.getElementById('wordBank');
+            const feedbackArea = document.getElementById('sentenceFeedback');
             dropArea.innerHTML = '';
             wordBank.innerHTML = '';
+            feedbackArea.innerHTML = '';
+            feedbackArea.style.display = 'none';
             dropArea.classList.remove('correct', 'incorrect');
 
-            const correctWords = [...sentence.words];
-            const distractorWords = [];
-            const numDistractors = Math.min(3, vocabulary.length - correctWords.length);
-
-            while(distractorWords.length < numDistractors) {
-                const randomWord = vocabulary[Math.floor(Math.random() * vocabulary.length)].polish;
-                if(!correctWords.includes(randomWord) && !distractorWords.includes(randomWord)) {
-                    distractorWords.push(randomWord);
-                }
-            }
-
-            let allWords = [...correctWords, ...distractorWords];
-            for (let i = allWords.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [allWords[i], allWords[j]] = [allWords[j], allWords[i]];
-            }
+            let allWords = [...sentence.words];
+            allWords.sort(() => Math.random() - 0.5);
 
             allWords.forEach(word => {
-                const token = document.createElement('div');
-                token.textContent = word;
-                token.className = 'word-token';
-                token.draggable = true;
-                token.addEventListener('dragstart', (e) => e.target.classList.add('dragging'));
-                token.addEventListener('dragend', (e) => e.target.classList.remove('dragging'));
-                token.addEventListener('click', () => {
-                    if (sentenceChecked) return;
-                    const destination = token.parentElement.id === 'wordBank' ? dropArea : wordBank;
-                    destination.appendChild(token);
-                });
+                const token = createWordToken(word);
                 wordBank.appendChild(token);
             });
             
             document.getElementById('checkSentenceBtn').disabled = false;
-            document.getElementById('checkSentenceBtn').style.opacity = '1';
             document.getElementById('nextSentenceBtn').disabled = true;
-            document.getElementById('nextSentenceBtn').style.opacity = '0.5';
         }
         
-        const dropArea = document.getElementById('sentenceDropArea');
-        const wordBank = document.getElementById('wordBank');
-        
-        if (dropArea && wordBank) {
-            dropArea.addEventListener('dragover', (e) => { e.preventDefault(); });
-            dropArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                const draggingElement = document.querySelector('.dragging');
-                if (draggingElement) dropArea.appendChild(draggingElement);
+        function createWordToken(word) {
+            const token = document.createElement('div');
+            token.textContent = word;
+            token.className = 'word-token';
+            token.draggable = true;
+            token.addEventListener('dragstart', (e) => e.target.classList.add('dragging'));
+            token.addEventListener('dragend', (e) => e.target.classList.remove('dragging'));
+            token.addEventListener('click', () => {
+                if (sentenceChecked) return;
+                const destination = token.parentElement.id === 'wordBank' ? document.getElementById('sentenceDropArea') : document.getElementById('wordBank');
+                destination.appendChild(token);
             });
-            wordBank.addEventListener('dragover', (e) => { e.preventDefault(); });
-            wordBank.addEventListener('drop', (e) => {
-                e.preventDefault();
-                const draggingElement = document.querySelector('.dragging');
-                if (draggingElement) wordBank.appendChild(draggingElement);
-            });
+            return token;
         }
 
         function checkSentence() {
             if(sentenceChecked) return;
             sentenceChecked = true;
+            const dropArea = document.getElementById('sentenceDropArea');
             const userAnswer = Array.from(dropArea.children).map(c => c.textContent).join(' ');
             const correctAnswer = sentenceData[currentSentenceIndex].polish;
+            
             stats.totalAnswers++;
             if(userAnswer === correctAnswer) {
                 dropArea.classList.add('correct');
@@ -2134,12 +1473,14 @@
                 stats.correctAnswers++;
             } else {
                 dropArea.classList.add('incorrect');
+                const feedbackArea = document.getElementById('sentenceFeedback');
+                feedbackArea.innerHTML = `<strong>Prawid??owa odpowied?? / Правильный ответ:</strong><br>${correctAnswer}`;
+                feedbackArea.style.display = 'block';
             }
+            
             updateStats();
             document.getElementById('checkSentenceBtn').disabled = true;
-            document.getElementById('checkSentenceBtn').style.opacity = '0.5';
             document.getElementById('nextSentenceBtn').disabled = false;
-            document.getElementById('nextSentenceBtn').style.opacity = '1';
         }
 
         function nextSentence() {
@@ -2148,21 +1489,26 @@
             stats.exercisesCompleted++;
             loadSentence();
         }
+        
+        // Drag and Drop Logic
+        const dropArea = document.getElementById('sentenceDropArea');
+        const wordBank = document.getElementById('wordBank');
+        if (dropArea && wordBank) {
+            [dropArea, wordBank].forEach(area => {
+                area.addEventListener('dragover', (e) => { e.preventDefault(); });
+                area.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    if (sentenceChecked) return;
+                    const draggingElement = document.querySelector('.dragging');
+                    if (draggingElement) area.appendChild(draggingElement);
+                });
+            });
+        }
 
         // --- INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', function() {
-            // Load saved level or set default
-            let savedLevel = 'A1';
-            try {
-                savedLevel = localStorage.getItem('polishAppLevel') || 'A1';
-            } catch(e) {
-                console.log('LocalStorage not available');
-            }
-            setLevel(savedLevel);
+            loadProgress();
             
-            updateStats();
-            
-            // Animate activity cards
             document.querySelectorAll('.activity-card').forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
@@ -2174,16 +1520,8 @@
             });
         });
         
-        // Handle escape key to go back to menu
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') backToMenu();
-        });
-
-        // Handle visibility change to stop recording when tab is not active
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden && isRecording) {
-                stopRecording();
-            }
         });
     </script>
 </body>
